@@ -1,0 +1,41 @@
+.navBar {
+    display: flex;
+    justify-content: flex-end;
+    background-color: white;
+    box-shadow: 0 10px 15px -8px #eeeded;
+    height: 85px;
+}
+
+.leftContainer {
+    float: left;
+    margin-left: 30px;
+    width: 500px;
+}
+
+.loginAndSignUpModal {
+    display: flex;
+    flex-direction: row;
+}
+
+.rightContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+    margin: 10px;
+    width: 500px;
+    padding: 20px 0px;
+}
+
+ul {
+    list-style: none;
+}
+
+.navLinks {
+    text-decoration: none;
+}
+
+a {
+    padding: 20px;
+    font-size: 20px;
+}
