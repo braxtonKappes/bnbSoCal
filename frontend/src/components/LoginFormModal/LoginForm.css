@@ -8,6 +8,10 @@
     color: red;
 }
 
+.hideErrorList {
+    display: none;
+}
+
 .loginForm {
     display: flex;
     justify-content: center;
@@ -15,15 +19,11 @@
     align-items: flex-end;
 }
 
-label {
+.loginButton {
     display: flex;
     align-self: center;
-}
-
-label {
-    padding: 5px 0 5px 0;
-}
-
-input {
-    margin: 0 0 0 10px;
+    margin-top: 25px;
+    border-radius: 15px;
+    padding: 10px;
+    border-color: black;
 }

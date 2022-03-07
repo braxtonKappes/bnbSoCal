@@ -41,7 +41,6 @@ router.post('/', asyncHandler(async (req, res, next) => {
 
 // Log out
 router.delete('/', (_req, res) => {
-        console.log(res);
         res.clearCookie('token');
         return res.json({ message: 'success' });
     }

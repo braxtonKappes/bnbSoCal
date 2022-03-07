@@ -5,6 +5,7 @@ import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignupFormModal';
+import DemoUser from '../DemoUser';
 
 function Navigation({ isLoaded }){
     const sessionUser = useSelector(state => state.session.user);
@@ -20,6 +21,7 @@ function Navigation({ isLoaded }){
         <div className='loginAndSignUpModal'>
         <LoginFormModal />
         <SignUpFormModal />
+        <DemoUser />
         </div>
     );
 }
