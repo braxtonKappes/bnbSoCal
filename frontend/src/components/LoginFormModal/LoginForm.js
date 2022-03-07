@@ -23,7 +23,7 @@ function LoginForm() {
     return (
     <div className="formContainer">
         <form className='loginForm' onSubmit={handleSubmit}>
-            <ul className="errorList">
+            <ul className={errors.length > 0 ? "errorList" : "hideErrorList"}>
             {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
             ))}

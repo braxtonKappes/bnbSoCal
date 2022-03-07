@@ -7,9 +7,11 @@
 }
 
 .leftContainer {
+    display: flex;
+    justify-content: flex-start;
     float: left;
     margin-left: 30px;
-    width: 500px;
+    width: 750px;
 }
 
 .loginAndSignUpModal {
@@ -28,6 +30,7 @@
 }
 
 ul {
+    display: flex;
     list-style: none;
 }
 
