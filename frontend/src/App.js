@@ -30,6 +30,9 @@ function App() {
           <Route path="/spots">
             <Spots />
           </Route>
+          <Route path='/spots/:spotId'>
+            
+          </Route>
         </Switch>
       )}
     </>
