@@ -40,4 +40,25 @@ const spotsFakerSeed = (num) => {
     }
 }
 
-spotsFakerSeed(12)
+// spotsFakerSeed(12)
+
+const reviewsFakerSeed = (num) => {
+    let i = 0;
+
+    while (i < num) {
+        const spot = {
+            review: faker.lorem.paragraph(),
+            rating: faker.datatype.number({
+                'min': 1,
+                'max': 5,
+            }),
+            createdAt: faker.date.between("2015-01-01", "2021-12-30").toDateString(),
+            updatedAt: faker.date.between("2022-01-01", "2022-03-15").toDateString()
+        };
+
+        console.log(spot, ",")
+        i++;
+    }
+}
+
+reviewsFakerSeed(6)
