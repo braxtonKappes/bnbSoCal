@@ -3,8 +3,11 @@ import { useDispatch } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
-import Home from "./components/Home/Home.js";
-import Spots from "./components/Spots/Spots.js"
+import Home from "./components/Home/Home";
+import Spots from "./components/Spots/Spots";
+import SpotPage from "./components/SpotPage/SpotPage";
+import HostForm from "./components/HostForm/HostForm";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,10 +34,17 @@ function App() {
             <Spots />
           </Route>
           <Route path='/spots/:spotId'>
-            
+            <SpotPage />
+          </Route>
+          <Route path='/spots/host'>
+            <HostForm />
+          </Route>
+          <Route>
+            <h1>Page Not Found</h1>
           </Route>
         </Switch>
       )}
+      <Footer />
     </>
     )
   );
