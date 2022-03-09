@@ -23,7 +23,6 @@
 .signUpButton {
     display: flex;
     align-self: center;
-    margin-top: 25px;
     border-radius: 15px;
     padding: 10px;
     border-color: black;

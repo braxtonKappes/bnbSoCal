@@ -6,6 +6,9 @@ import './Navigation.css';
 import LoginFormModal from '../LoginFormModal';
 import SignUpFormModal from '../SignupFormModal';
 import DemoUser from '../DemoUser';
+import Logo2 from './Logo2.png'
+import SearchIcon from '@material-ui/icons/Search';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 function Navigation({ isLoaded }){
     const sessionUser = useSelector(state => state.session.user);
@@ -18,7 +21,7 @@ function Navigation({ isLoaded }){
     );
     } else {
     sessionLinks = (
-        <div className='loginAndSignUpModal'>
+        <div className='sessionLinks'>
         <LoginFormModal />
         <SignUpFormModal />
         <DemoUser />
@@ -28,16 +31,16 @@ function Navigation({ isLoaded }){
 
 return (
     <nav className='navBar'>
-        <div className='leftContainer'>
-            <img alt='Logo' id="bnbCalifornia"></img>
+        <img alt='Logo' className='bnbLogo' src={ Logo2 }></img>
+        <div className='middleContainer'>
+            <input type='text' />
+            <SearchIcon />
         </div>
         <div className='rightContainer'>
-            <ul>
-                <li>
-                <NavLink className="navLinks" exact to="/">Home</NavLink>
-                {isLoaded && sessionLinks}
-                </li>
-            </ul>
+            <p>Become a Host</p>
+            <ExpandMoreIcon />
+            <NavLink className="navLinks" exact to="/">Home</NavLink>
+            {isLoaded && sessionLinks}
         </div>
     </nav>
     );
