@@ -8,6 +8,7 @@ module.exports = {
 
       Example:*/
       return queryInterface.bulkInsert('Spots', [{
+        userId: '1',
         address: '5828 Olson Fall',
         city: 'San Diego',
         state: 'California',
@@ -18,6 +19,7 @@ module.exports = {
         updatedAt: 'Mon Jan 31 2022'
       } ,
       {
+        userId: '3',
         address: '80021 Berge Mountains',
         city: 'Irvine',
         state: 'California',
@@ -28,6 +30,7 @@ module.exports = {
         updatedAt: 'Mon Mar 14 2022'
       } ,
       {
+        userId: '5',
         address: '9122 Flatley Loop',
         city: 'Huntington Beach',
         state: 'California',
@@ -38,6 +41,7 @@ module.exports = {
         updatedAt: 'Sat Mar 12 2022'
       } ,
       {
+        userId: '4',
         address: '061 Hamill Mountains',
         city: 'Laguna Beach',
         state: 'California',
@@ -48,6 +52,7 @@ module.exports = {
         updatedAt: 'Thu Jan 06 2022'
       } ,
       {
+        userId: '1',
         address: '140 Lisa Spring',
         city: 'Anaheim',
         state: 'California',
@@ -58,6 +63,7 @@ module.exports = {
         updatedAt: 'Sat Jan 08 2022'
       } ,
       {
+        userId: '2',
         address: '527 Keith Loaf',
         city: 'Newport Beach',
         state: 'California',
@@ -68,6 +74,7 @@ module.exports = {
         updatedAt: 'Sun Jan 02 2022'
       } ,
       {
+        userId: '13',
         address: '20140 Jay Estate',
         city: 'Costa Mesa',
         state: 'California',
@@ -78,6 +85,7 @@ module.exports = {
         updatedAt: 'Tue Mar 01 2022'
       } ,
       {
+        userId: '15',
         address: '2026 Lizzie Run',
         city: 'Lake Forest',
         state: 'California',
@@ -88,6 +96,7 @@ module.exports = {
         updatedAt: 'Wed Feb 23 2022'
       } ,
       {
+        userId: '5',
         address: '1068 Augusta Villages',
         city: 'Seal Beach',
         state: 'California',
@@ -98,6 +107,7 @@ module.exports = {
         updatedAt: 'Tue Mar 01 2022'
       } ,
       {
+        userId: '9',
         address: '581 Metz Valleys',
         city: 'Burbank',
         state: 'California',
@@ -108,6 +118,7 @@ module.exports = {
         updatedAt: 'Wed Mar 09 2022'
       } ,
       {
+        userId: '4',
         address: '6274 Cole Gateway',
         city: 'Newport Beach',
         state: 'California',
@@ -118,6 +129,7 @@ module.exports = {
         updatedAt: 'Thu Jan 20 2022'
       } ,
       {
+        userId: '7',
         address: '2977 Eileen Pass',
         city: 'Burbank',
         state: 'California',

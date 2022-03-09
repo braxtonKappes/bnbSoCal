@@ -1,6 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Bookings = sequelize.define('Bookings', {
+    userId: DataTypes.INTEGER,
+    spotId: DataTypes.INTEGER,
     startDate: DataTypes.DATEONLY,
     endDate: DataTypes.DATEONLY
   }, {});
