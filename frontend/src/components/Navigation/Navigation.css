@@ -1,44 +1,51 @@
 .navBar {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     background-color: white;
     box-shadow: 0 10px 15px -8px #eeeded;
-    height: 85px;
+    height: 110px;
+    position: sticky;
+    z-index: 100;
+    width: 100%;
+    top: 0;
+}
+
+.bnbLogo {
+    object-fit: contain;
+    height: 100px;
+}
+
+.middleContainer {
+    display: flex;
+    align-items: center;
+    flex: 1;
 }
 
 .leftContainer {
     display: flex;
-    justify-content: flex-start;
-    float: left;
-    margin-left: 30px;
-    width: 750px;
-}
-
-.loginAndSignUpModal {
-    display: flex;
-    flex-direction: row;
 }
 
 .rightContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-    float: right;
     margin: 10px;
     width: 500px;
     padding: 20px 0px;
 }
 
-ul {
+.sessionLinks {
     display: flex;
-    list-style: none;
+}
+
+
+.sessionLinks > * {
+    display: flex;
+    margin: 10px;
+    align-self: center;
 }
 
 .navLinks {
     text-decoration: none;
-}
-
-a {
-    padding: 20px;
-    font-size: 20px;
 }
