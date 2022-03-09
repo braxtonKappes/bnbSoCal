@@ -8,6 +8,7 @@ import Spots from "./components/Spots/Spots";
 import SpotPage from "./components/SpotPage/SpotPage";
 import HostForm from "./components/HostForm/HostForm";
 import Footer from "./components/Footer/Footer";
+import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +41,7 @@ function App() {
             <HostForm />
           </Route>
           <Route>
-            <h1>Page Not Found</h1>
+            <ErrorPage />
           </Route>
         </Switch>
       )}

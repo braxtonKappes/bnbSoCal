@@ -26,5 +26,35 @@ const removeSpot = (list) => ({
 });
 
 export const getAllSpots = () => async (dispatch) => {
-    const res = csrfFetch(`/api/spots`)
+    const res = await csrfFetch(`/api/spots`)
+
+    if (res.ok) {
+        const spots = await res.json();
+        dispatch(loadAll(spots))
+        return spots;
+    }
+};
+
+const initialState = {
+    list: {},
+};
+
+const spotsReducer = (state=initialState, action) => {
+    switch (action.type) {
+        case LOAD_ALL: {
+            const allSpots = {}
+            action.list.forEach(spot => {
+                allSpots[spot.id] = spot
+            });
+            return{
+                ...allSpots,
+                ...state.list,
+                list: action.list
+            }
+        }
+        default:
+            return state;
+    }
 }
+
+export default spotsReducer;
