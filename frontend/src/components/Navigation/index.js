@@ -29,7 +29,7 @@ function Navigation({ isLoaded }){
 
 return (
     <nav className='navBar'>
-        <NavLink exact to='/' className='logoClickHome'><a href='' className='bnbLogo'><img alt='Logo' className='bnbLogo' src={ Logo2 }></img></a></NavLink>
+        <NavLink exact to='/' className='logoClickHome'><img alt='Logo' className='bnbLogo' src={ Logo2 }></img></NavLink>
         <div className='rightContainer'>
             <p>Become a Host</p>
             {isLoaded && sessionLinks}

@@ -61,4 +61,25 @@ const reviewsFakerSeed = (num) => {
     }
 }
 
-reviewsFakerSeed(6)
+// reviewsFakerSeed(6)
+
+const imagesFakerSeed = (num) => {
+    let i = 0;
+
+    while (i < num) {
+        const image = {
+            spotId: faker.datatype.number({
+                'min': 1,
+                'max': 10,
+            }),
+            url: '',
+            createdAt: faker.date.between("2015-01-01", "2021-12-30").toDateString(),
+            updatedAt: faker.date.between("2022-01-01", "2022-03-15").toDateString()
+        };
+
+        console.log(image, ",")
+        i++;
+    }
+}
+
+// imagesFakerSeed(12)
