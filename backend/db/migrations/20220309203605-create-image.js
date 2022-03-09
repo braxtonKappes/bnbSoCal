@@ -8,8 +8,13 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      url: {
+      spotId: {
+        allowNull: false,
         type: Sequelize.INTEGER
+      },
+      url: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

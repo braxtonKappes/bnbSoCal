@@ -3,9 +3,9 @@ import './Footer.css'
 
 function Footer() {
     return (
-    <div className='Footer'>
-
-    </div>
+    <footer className='Footer'>
+        <p>Developed By: Braxton Kappes</p>
+    </footer>
     )
 }
 

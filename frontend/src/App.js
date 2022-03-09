@@ -7,7 +7,7 @@ import Home from "./components/Home/Home";
 import Spots from "./components/Spots/Spots";
 import SpotPage from "./components/SpotPage/SpotPage";
 import HostForm from "./components/HostForm/HostForm";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 
 function App() {
@@ -24,8 +24,9 @@ function App() {
 
   return (
     isLoaded && (
-    <>
+      <>
       <Navigation isLoaded={isLoaded} />
+      {/* <Footer isLoaded={isLoaded}/> */}
       {isLoaded && (
         <Switch>
           <Route exact path="/">
@@ -45,7 +46,6 @@ function App() {
           </Route>
         </Switch>
       )}
-      <Footer />
     </>
     )
   );
