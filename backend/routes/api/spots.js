@@ -5,14 +5,10 @@ const { Spot, User } = require('../../db/models');
 // const { check } = require('express-validator');
 // const { handleValidationErrors } = require('../../utils/validation');
 
-// router.all('*', (req, res) => {
-//     // console.log(`gfdsgdsgf`);
-// })
-
 // Getting all spots
 router.get('/', asyncHandler(async(req, res) => {
     const spots = await Spot.findAll({
-        include: User
+        include: [ User ]
     })
     return res.json(spots)
 }))

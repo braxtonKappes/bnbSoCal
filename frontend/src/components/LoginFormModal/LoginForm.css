@@ -1,6 +1,7 @@
 .formContainer {
     display: flex;
     justify-content: center;
+    max-width: 100%;
 }
 
 .errorList {
@@ -22,7 +23,14 @@
 .loginButton {
     display: flex;
     align-self: center;
+    border: 2px solid black;
     border-radius: 15px;
-    padding: 10px;
-    border-color: black;
+    padding: 4px 8px 4px 8px;
+    cursor: pointer;
+    background-color: white;
+}
+
+.loginButton :hover {
+    background-color: grey;
+    color: red;
 }

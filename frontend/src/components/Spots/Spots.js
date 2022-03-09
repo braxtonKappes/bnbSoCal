@@ -6,7 +6,7 @@ import { getAllSpots } from '../../store/spots'
 
 function Spots() {
     const dispatch = useDispatch();
-    // const allSpots = useSelector(state => state.spots.list);
+    const spotsList = useSelector(state => state.spots.list);
 
     useEffect(() => {
         dispatch(getAllSpots())
@@ -14,7 +14,9 @@ function Spots() {
 
     return (
     <div className='Spots'>
-        
+        {spotsList.map(spot => (
+            <div key={`${spot.name}`}></div>
+        ))}
     </div>
     )
 }

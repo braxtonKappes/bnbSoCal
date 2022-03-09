@@ -31,13 +31,13 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/spots">
+          <Route exact path="/spots">
             <Spots />
           </Route>
-          <Route path='/spots/:spotId'>
+          <Route exact path='/spots/:spotId'>
             <SpotPage />
           </Route>
-          <Route path='/spots/host'>
+          <Route exact path='/spots/host'>
             <HostForm />
           </Route>
           <Route>

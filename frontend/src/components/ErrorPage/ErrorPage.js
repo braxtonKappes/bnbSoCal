@@ -6,7 +6,7 @@ import './ErrorPage.css'
 function ErrorPage() {
     return (
     <div className='ErrorPage'>
-        <h1>Page Not Found</h1>
+        <h1>PAGE NOT FOUND!</h1>
         <NavLink className="returnHome" exact to="/">Return Home</NavLink>
     </div>
     )
