@@ -57,7 +57,7 @@ module.exports = {
         city: 'Anaheim',
         state: 'California',
         country: 'United States',
-        name: 'The LEMONDROP cottage',
+        name: 'The Vacation Cottage',
         price: '85.00',
         createdAt: 'Mon Dec 14 2015',
         updatedAt: 'Sat Jan 08 2022'

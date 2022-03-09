@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllSpots } from '../../store/spots'
@@ -7,28 +7,22 @@ import './Spots.css'
 function Spots() {
     const dispatch = useDispatch();
     const spotsList = useSelector(state => state.spots.list);
-    const [ isLoaded, setIsLoaded ] = useState(false)
 
     useEffect(() => {
-        const load = async() => {
-            await dispatch(getAllSpots())
-            setIsLoaded(true)
-        }
-        load()
-    }, []);
+            dispatch(getAllSpots())
+        }, [dispatch]);
 
     return (
-        isLoaded && (
             <div className='overallContainer'>
                 {spotsList.map(spot => (
                     <div key={spot.id} className='spotsContainer'>
+                        {console.log(spot.Images)}
                         <Link to={`/spots/${spot.id}`}>
-                            <img className='spotImage' src={spot.Images.url}></img>
+                            <img alt='spotImg' className='spotImage' src={spot.Images[0].url}></img>
                         </Link>
                     </div>
                 ))}
             </div>
-        )
     )
 }
 

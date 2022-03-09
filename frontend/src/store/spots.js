@@ -34,8 +34,13 @@ export const getAllSpots = () => async (dispatch) => {
     }
 };
 
+export const getOneSpot = () => {
+
+}
+
 const initialState = {
     list: [],
+    currentSpot: [],
 };
 
 const spotsReducer = (state=initialState, action) => {
@@ -46,11 +51,12 @@ const spotsReducer = (state=initialState, action) => {
                 spotsList[spot.id] = spot
             });
             return{
-                ...spotsList,
-                ...state.list,
                 list: action.list
             }
         }
+        // case LOAD_ONE: {
+
+        // }
         default:
             return state;
     }
