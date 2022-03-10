@@ -181,8 +181,8 @@ module.exports = {
         hashedPassword: '$2a$10$e10ZyCP6ICnOLFDqzEM3suqeQhRpEYKXXaQM42tIy54WYhxGkAwbC',
         createdAt: 'Mon Jan 11 2021',
         updatedAt: 'Sat Mar 05 2022'
-      } ,], {});
-
+      }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
