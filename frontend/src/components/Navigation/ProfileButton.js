@@ -32,7 +32,6 @@ function ProfileButton({ user }) {
     <>
         <div className="profileButton" onClick={openMenu}>
             <i className="fa-solid fa-user"></i>
-            <div className="demoUserText">Demo User</div>
         </div>
         {showMenu && (
         <div className="profile-dropdown">
