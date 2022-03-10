@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const asyncHandler = require('express-async-handler');
-const { Spot, User, Image } = require('../../db/models');
+const { Spot, User, Image, Review } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -49,9 +49,9 @@ router.get('/', asyncHandler(async(req, res) => {
 
 // Getting one spot
 router.get('/:id', asyncHandler(async(req, res) => {
-    const spotId = parseInt(req.params.id, 10)
+    const spotId = req.params.id * 1;
     const spot = await Spot.findByPk(spotId, {
-        include: [ Image, User ]
+        include: [ Image, User, Review ]
     })
     return res.json(spot)
 }));

@@ -53,8 +53,8 @@ export const getAllSpots = () => async (dispatch) => {
     };
 };
 
-export const getOneSpot = () => async (dispatch) => {
-    const res = await csrfFetch(`/api/spots`)
+export const getOneSpot = (spotId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${spotId}`)
 
     if (res.ok) {
         const spot = await res.json();
@@ -90,10 +90,11 @@ export const delSpot = (data) => async (dispatch) => {
 
 const initialState = {
     list: [],
+    oneSpot: {}
 };
 
 const spotsReducer = (state=initialState, action) => {
-    const newState = {...state};
+    let newState = {...state};
     switch (action.type) {
         case LOAD_ALL: {
             const spotsList = {};
@@ -105,13 +106,10 @@ const spotsReducer = (state=initialState, action) => {
             }
         }
         case LOAD_ONE: {
-            newState = {
-            [action.spot.id]: action.spot
-            }
+            newState.oneSpot = action.spot
             return newState;
         }
         case ADD_SPOT: {
-            // newState = {...state, [action.spot.id]: action.spot}
             newState[action.spot.id] = {...state.spot}
             return newState;
         }

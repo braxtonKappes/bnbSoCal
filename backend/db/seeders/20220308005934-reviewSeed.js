@@ -54,8 +54,8 @@ module.exports = {
         rating: 5,
         createdAt: 'Fri Mar 16 2018',
         updatedAt: 'Mon Feb 14 2022'
-      } ,], {});
-
+      }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {

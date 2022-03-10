@@ -78,7 +78,8 @@ module.exports = {
         url: 'https://media.scurto.net/2014/media/104096-b.jpg',
         createdAt: 'Sat Sep 01 2018',
         updatedAt: 'Fri Mar 04 2022'
-      }], {});
+      }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {

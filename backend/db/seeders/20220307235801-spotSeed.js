@@ -138,8 +138,8 @@ module.exports = {
         price: '218.00',
         createdAt: 'Wed Jun 24 2015',
         updatedAt: 'Wed Feb 16 2022'
-      } ,], {});
-
+      }
+    ], {});
   },
 
   down: (queryInterface, Sequelize) => {
