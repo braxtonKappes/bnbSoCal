@@ -13,16 +13,26 @@ function Spots() {
         }, [dispatch]);
 
     return (
-            <div className='overallContainer'>
+        <div className='mainBody'>
+        <h1 className='bookingMadeEasy'>Booking Made Easy</h1>
+            <div className='overallSpotsContainer'>
                 {spotsList.map(spot => (
-                    <div key={spot.id} className='spotsContainer'>
-                        {console.log(spot.Images)}
+                    <div key={spot.id} className='spotContainer'>
                         <Link to={`/spots/${spot.id}`}>
                             <img alt='spotImg' className='spotImage' src={spot.Images[0].url}></img>
+                        <div className='infoContainer'>
+                            <div className='cityAndState'>
+                                {spot.city}, {spot.state}
+                            </div>
+                            <div className='price'>
+                                {`$${spot.price} / night`}
+                            </div>
+                        </div>
                         </Link>
                     </div>
                 ))}
             </div>
+        </div>
     )
 }
 
