@@ -12,8 +12,8 @@ function SpotPage() {
     const spot = useSelector(state => state.spots.oneSpot);
     const { spotId } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
-    console.log("spotId is,", `${spotId}.`);
-    console.log("spot info is here,", spot);
+    // console.log("spotId is,", `${spotId}.`);
+    // console.log("spot info is here,", spot);
 
     useEffect(() => {
         const loaded = async () => {
@@ -42,7 +42,6 @@ function SpotPage() {
                 </div>
                 <div className='bottomSection'>
                     <div className='spotPageInfo'>
-
                     </div>
                 </div>
                 <div className='reviewSection'>
