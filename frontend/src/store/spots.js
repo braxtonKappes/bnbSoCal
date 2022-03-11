@@ -100,7 +100,6 @@ const initialState = {
 
 const spotsReducer = (state=initialState, action) => {
     let newState = {...state};
-
     switch (action.type) {
         case LOAD_ALL: {
             const spotsList = {};
@@ -112,8 +111,8 @@ const spotsReducer = (state=initialState, action) => {
             }
         }
         case LOAD_ONE: {
-            console.log("Hello newState", newState);
             newState.oneSpot = action.spot
+            console.log('hellooooo,',newState);
             return newState;
         }
         case ADD_SPOT: {
