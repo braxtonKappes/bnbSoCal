@@ -14,7 +14,7 @@ function Spots() {
 
     return (
         <div className='mainBody'>
-        <h1 className='bookingMadeEasy'>Booking Made Easy</h1>
+            <h1 className='bookingMadeEasy'>Booking Made Easy</h1>
             <div className='overallSpotsContainer'>
                 {spotsList.map(spot => (
                     <div key={spot.id} className='spotContainer'>
@@ -22,7 +22,7 @@ function Spots() {
                             <img alt='spotImg' className='spotImage' src={spot.Images[0].url}></img>
                         <div className='infoContainer'>
                             <div className='cityAndState'>
-                                {spot.city}, {spot.state}
+                                <p>{spot.city}, {spot.state}</p>
                             </div>
                             <div className='price'>
                                 {`$${spot.price} / night`}

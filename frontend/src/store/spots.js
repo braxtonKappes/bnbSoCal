@@ -27,10 +27,11 @@ const removeSpot = (spotId) => ({
 });
 
 const editSpot = (spotId) => ({
-    type: REMOVE_SPOT,
+    type: EDIT_SPOT,
     spotId
 });
 
+// Edit a spot
 export const putSpot = (data) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots`, {
         method: "PUT",
@@ -43,6 +44,7 @@ export const putSpot = (data) => async (dispatch) => {
     }
 }
 
+// Get all spots
 export const getAllSpots = () => async (dispatch) => {
     const res = await csrfFetch(`/api/spots`)
 
@@ -53,6 +55,7 @@ export const getAllSpots = () => async (dispatch) => {
     };
 };
 
+// Get one spot
 export const getOneSpot = (spotId) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots/${spotId}`)
 
@@ -63,6 +66,7 @@ export const getOneSpot = (spotId) => async (dispatch) => {
     };
 };
 
+// Create a spot
 export const hostSpot = (data) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots`, {
         method: `POST`,
@@ -76,6 +80,7 @@ export const hostSpot = (data) => async (dispatch) => {
     }
 }
 
+// Delete a spot
 export const delSpot = (data) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots/`, {
         method: `DELETE`,
@@ -95,6 +100,7 @@ const initialState = {
 
 const spotsReducer = (state=initialState, action) => {
     let newState = {...state};
+
     switch (action.type) {
         case LOAD_ALL: {
             const spotsList = {};
@@ -106,6 +112,7 @@ const spotsReducer = (state=initialState, action) => {
             }
         }
         case LOAD_ONE: {
+            console.log("Hello newState", newState);
             newState.oneSpot = action.spot
             return newState;
         }
