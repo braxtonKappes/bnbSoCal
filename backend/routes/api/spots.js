@@ -69,9 +69,13 @@ asyncHandler(async (req, res) => {
 router.delete('/:id',
 requireAuth,
 asyncHandler(async (req, res) => {
-    const spot = await Spot.findByPk(req.body)
-    await spot.destroy()
-    return res.json(spot)
+    const element = await Spot.findByPk(req.body)
+    await Spot.destroy({
+        where: {
+            id: element.id
+        }
+    })
+    return res.json(element)
 }));
 
 // Edit a spot
