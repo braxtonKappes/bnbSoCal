@@ -1,39 +1,32 @@
 import React, { useState } from "react";
-import * as sessionActions from "../../store/session";
+import * as spotsActions from "../../store/spots";
 import { useDispatch } from "react-redux";
-import './LoginForm.css';
+import { useHistory } from "react-router-dom";
+import './DeleteConfirm.css';
 
-function LoginForm() {
+function DeleteConfirm( { setShowModal, spotId } ) {
     const dispatch = useDispatch();
-    const [credential, setCredential] = useState("");
-    const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState([]);
-
-    const handleSubmit = (e) => {
+    const history = useHistory()
+    const handleCLick = async (e) => {
     e.preventDefault();
-    setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
-        async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-        }
-    );
-};
+    await dispatch(spotsActions.delSpot(spotId));
+    setShowModal(false);
+    history.push('/spots')
+    }
 
     return (
     <div className="formContainer">
-        <form className='loginForm' onSubmit={handleSubmit}>
-            <ul className={errors.length > 0 ? "errorList" : "hideErrorList"}>
-            {errors.map((error, idx) => (
-                <li key={idx}>{error}</li>
-            ))}
+        <div className='deleteConfirm' onClick={handleCLick}>
             <h1>Are you sure you want to delete?</h1>
-            <button className="loginButton" type="submit">Submit</button>
-            <button className="cancelButton">Cancel</button>
-            </ul>
-        </form>
+            <div className="deleteButtonContainer">
+                <button className="submitButton" type="submit">Submit</button>
+                <button className="cancelButton" type='button' onClick={ () => setShowModal(false) }>
+                    Cancel
+                </button>
+            </div>
+        </div>
     </div>
     );
 }
 
-export default LoginForm;
+export default DeleteConfirm;

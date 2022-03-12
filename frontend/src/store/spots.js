@@ -1,4 +1,5 @@
 import { csrfFetch } from './csrf'
+import { addImage } from './images';
 
 const LOAD_ALL = 'spots/LOAD_ALL';
 const LOAD_ONE = 'spots/LOAD_ONE';
@@ -56,8 +57,8 @@ export const getAllSpots = () => async (dispatch) => {
 };
 
 // Get one spot
-export const getOneSpot = (spotId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/spots/${spotId}`)
+export const getOneSpot = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${id}`)
 
     if (res.ok) {
         const spot = await res.json();
@@ -74,17 +75,18 @@ export const hostSpot = (data) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const spot = await res.json();
-        dispatch(addSpot(spot));
-        return spot;
+        const spotData = await res.json();
+        console.log("this is spotData BEFORE dispatch,", spotData);
+        dispatch(addSpot(spotData.spot));
+        return spotData;
     }
 }
 
 // Delete a spot
-export const delSpot = (data) => async (dispatch) => {
-    const res = await csrfFetch(`/api/spots/`, {
+export const delSpot = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${id}`, {
         method: `DELETE`,
-        body: JSON.stringify(data),
+        body: JSON.stringify({id}),
     });
     if (res.ok) {
         const spotId = await res.json();
@@ -93,30 +95,21 @@ export const delSpot = (data) => async (dispatch) => {
     }
 }
 
-const initialState = {
-    list: [],
-    oneSpot: {}
-};
-
-const spotsReducer = (state=initialState, action) => {
-    let newState = {...state};
+const spotsReducer = (state={}, action) => {
+    let newState = {...state}
     switch (action.type) {
         case LOAD_ALL: {
-            const spotsList = {};
             action.list.forEach(spot => {
-                spotsList[spot.id] = spot
+            newState[spot.id] = spot;
             });
-            return{
-                list: action.list
-            }
+            return newState;
         }
         case LOAD_ONE: {
-            newState.oneSpot = action.spot
-            console.log('hellooooo,',newState);
+            newState[action.spot.id] = action.spot
             return newState;
         }
         case ADD_SPOT: {
-            newState[action.spot.id] = {...state.spot}
+            newState[action.spot.id] = action.spot
             return newState;
         }
         case REMOVE_SPOT: {

@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import DeleteConfirm from './DeleteConfirm';
+import './DeleteConfirm.css';
 
-function LoginFormModal() {
+function DeleteConfirmModal( {spotId} ) {
     const [showModal, setShowModal] = useState(false);
 
     return (
     <>
-        <button className='loginButton' onClick={() => setShowModal(true)}><i class="fa-solid fa-trash-can"></i></button>
+        <i className="fa-solid fa-trash-can" onClick={() => setShowModal(true)}></i>
         {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <LoginForm />
+            <DeleteConfirm spotId={spotId} setShowModal={setShowModal}/>
         </Modal>
         )}
     </>
     );
 }
 
-export default LoginFormModal;
+export default DeleteConfirmModal;

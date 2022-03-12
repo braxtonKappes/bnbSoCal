@@ -22,6 +22,11 @@ const hostFormValidations = [
         .notEmpty()
         .isLength({ max: 42 })
         .withMessage('Please provide a valid country'),
+    check(`state`)
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .isLength({ max: 15 })
+        .withMessage('Please provide a valid state'),
     check(`name`)
         .exists({ checkFalsy: true })
         .notEmpty()
@@ -32,10 +37,6 @@ const hostFormValidations = [
         .notEmpty()
         .isLength({ max: 9 })
         .withMessage('Please provide a valid price'),
-    check(`url`)
-        .exists({ checkFalsy: true })
-        .notEmpty()
-        .withMessage('Please provide a valid url'),
     handleValidationErrors,
 ];
 
@@ -61,30 +62,41 @@ router.post('/',
 requireAuth,
 hostFormValidations,
 asyncHandler(async (req, res) => {
-    const spot = await Spot.create(req.body)
-    return res.json(spot)
+    const { url, userId, address, city, state, country, name, price } = req.body;
+    const spot = await Spot.create({ userId, address, city, state, country, name, price });
+    const img = await Image.create({ spotId: spot.id, url })
+    return res.json({ spot, img })
 }));
 
 // Delete a spot
 router.delete('/:id',
 requireAuth,
 asyncHandler(async (req, res) => {
-    const element = await Spot.findByPk(req.body)
+    const { id } = req.body;
+    const spot = await Spot.findByPk(id)
     await Spot.destroy({
         where: {
-            id: element.id
+            id: spot.id
         }
     })
-    return res.json(element)
+    return res.json(spot)
 }));
 
 // Edit a spot
-router.put('/',
+router.put('/:id',
 requireAuth,
 asyncHandler(async (req, res) => {
-    const spotId = req.body.id
-    const editedSpot = await Spot.findByPk(spotId)
-    await editedSpot.update(req.body)
-    return res.json(editedSpot)
+    const spotId = req.params.id * 1;
+    const selectSpot = await Spot.findOne({
+        include: { model: Image},
+        where: { id: spotId }
+    });
+    await Spot.update(req.body, {
+        where: { id: spotId },
+        returning: true,
+        plain: true,
+    })
+    return res.json(selectSpot)
 }))
+
 module.exports = router;

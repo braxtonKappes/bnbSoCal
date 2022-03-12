@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Link } from 'react-router-dom';
 import { getOneSpot } from '../../store/spots'
 import { useParams } from 'react-router-dom';
 import './SpotPage.css'
-
-
+import DeleteConfirmationModal from '../DeleteConfirmationModal/index'
+import EditModal from '../EditModal/index'
 
 function SpotPage() {
     const dispatch = useDispatch();
-    const spot = useSelector(state => state.spots.oneSpot);
+    const spotObj = useSelector(state => Object.values(state.spots));
     const { spotId } = useParams();
     const [isLoaded, setIsLoaded] = useState(false);
-    // console.log("spotId is,", `${spotId}.`);
-    // console.log("spot info is here,", spot);
+    const spot = spotObj[0];
 
     useEffect(() => {
         const loaded = async () => {
             await dispatch(getOneSpot(spotId));
             setIsLoaded(true);
-            }
-            loaded();
-        }, [dispatch, spotId]);
+        }
+        loaded();
+    }, [dispatch, spotId]);
 
     return (
         isLoaded && (
@@ -42,7 +40,10 @@ function SpotPage() {
                 </div>
                 <div className='bottomSection'>
                     <div className='spotPageInfo'>
+
                     </div>
+                    <DeleteConfirmationModal spotId={spotId}/>
+                    <EditModal spot={spot}/>
                 </div>
                 <div className='reviewSection'>
                 </div>
