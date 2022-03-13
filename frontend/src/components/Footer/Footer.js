@@ -1,10 +1,15 @@
 import React from 'react'
 import './Footer.css'
+import InfoButton from './InfoButton'
 
 function Footer() {
+
+
     return (
     <footer className='Footer'>
-        <p>Developed By: Braxton Kappes</p>
+        <div className='infoButton'>
+            <InfoButton />
+        </div>
     </footer>
     )
 }

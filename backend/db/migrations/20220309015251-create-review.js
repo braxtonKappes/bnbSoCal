@@ -20,7 +20,8 @@ module.exports = {
         allowNull: false,
         references: {
           model: 'Spots'
-        }
+        },
+        onDelete: 'CASCADE'
       },
       review: {
         allowNull: false,

@@ -1,0 +1,7 @@
+.reviewsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(1px, 1fr));
+    row-gap: 32px;
+    margin-top: 100px;
+    margin-bottom: 150px;
+}

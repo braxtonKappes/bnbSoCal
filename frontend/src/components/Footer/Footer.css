@@ -1,11 +1,38 @@
 .Footer {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: fixed;
     bottom: 0;
-    width: 150px;
+    width: 100%;
     height: 60px;
     background-color: white;
     z-index: 100;
+    margin-bottom: 10px;
+}
+
+.infoButton {
+    display: flex;
+    align-items: center;
+    border: none;
+    background-color: white;
+    font-size: 150%;
+    padding: 0px 5px
+}
+
+.infoContainer {
+    display: flex;
+    max-width: 100%;
+}
+
+.infoBar {
+    display: flex;
+}
+
+.infoBarText {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: 2000;
 }

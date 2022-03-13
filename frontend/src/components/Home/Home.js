@@ -1,6 +1,8 @@
 import React from 'react'
 import './Home.css'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
 
 function Home() {
   return (

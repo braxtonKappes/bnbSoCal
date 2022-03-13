@@ -22,6 +22,11 @@ const hostFormValidations = [
         .notEmpty()
         .isLength({ max: 42 })
         .withMessage('Please provide a valid country'),
+    check(`state`)
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .isLength({ max: 15 })
+        .withMessage('Please provide a valid state'),
     check(`name`)
         .exists({ checkFalsy: true })
         .notEmpty()
@@ -61,30 +66,41 @@ router.post('/',
 requireAuth,
 hostFormValidations,
 asyncHandler(async (req, res) => {
-    const spot = await Spot.create(req.body)
-    return res.json(spot)
+    const { url, userId, address, city, state, country, name, price } = req.body;
+    const spot = await Spot.create({ userId, address, city, state, country, name, price });
+    const img = await Image.create({ spotId: spot.id, url })
+    return res.json({ spot, img })
 }));
 
 // Delete a spot
 router.delete('/:id',
 requireAuth,
 asyncHandler(async (req, res) => {
-    const element = await Spot.findByPk(req.body)
-    await Spot.destroy({
-        where: {
-            id: element.id
-        }
-    })
-    return res.json(element)
+    const id  = req.params.id * 1;
+    const spot = await Spot.findByPk(id)
+    await spot.destroy()
+    return res.json(id)
 }));
 
 // Edit a spot
 router.put('/',
 requireAuth,
 asyncHandler(async (req, res) => {
-    const spotId = req.body.id
-    const editedSpot = await Spot.findByPk(spotId)
-    await editedSpot.update(req.body)
-    return res.json(editedSpot)
+    const id = req.body.spotId
+    const { url, address, city, state, country, name, price } = req.body;
+    const selectedSpot = await Spot.findByPk(id)
+    const selectedImg = await Image.findOne({
+        where: {
+            spotId: id
+        }
+    });
+    await selectedSpot.update({ address, city, state, country, name, price });
+    await selectedImg.update({ url })
+
+    const spot = await Spot.findByPk(id, {
+        include: [ User, Image ]
+    })
+    return res.json(spot)
 }))
+
 module.exports = router;
