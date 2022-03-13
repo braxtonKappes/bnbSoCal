@@ -2,3 +2,9 @@
     position: relative;
     top: 125px;
 }
+
+.allSpotInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -1,7 +1,38 @@
 .reviewsContainer {
     display: grid;
-    grid-template-columns: repeat(4, minmax(1px, 1fr));
+    grid-template-columns: repeat(2, minmax(1px, 1fr));
     row-gap: 32px;
-    margin-top: 100px;
-    margin-bottom: 150px;
+    margin-top: 20px;
+    margin-bottom: 100px;
+    padding: 0px 10px;
+    width: 50%;
+}
+
+.createReviewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.reviewLabel {
+    display: flex;
+    justify-content: center;
+}
+
+.inputForReview {
+    display: flex;
+    justify-content: center;
+}
+
+.reviewRating {
+    margin: 10px 0px;
+}
+
+.reviewRating > i {
+    font-size: 20px;
+}
+
+.outerReviewsContainer {
+    display: flex;
+    justify-content: center;
 }

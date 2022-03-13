@@ -12,7 +12,6 @@ function SpotPage() {
     const dispatch = useDispatch();
     const spot = useSelector(state => state.spots.oneSpot);
     const { spotId } = useParams();
-    console.log("this is spot,", spot);
 
     useEffect(() => {
         const loaded = async () => {
@@ -25,26 +24,28 @@ function SpotPage() {
     return (
         isLoaded && (
         <div className='mainBody'>
-            <div className='topSection'>
-                <div className='spotNameContainer'>
-                    <h1 className='spotName'>{spot.name}</h1>
+            <div className='allSpotInfo'>
+                <div className='topSection'>
+                    <div className='spotNameContainer'>
+                        <h1 className='spotName'>{spot.name}</h1>
+                    </div>
+                    <div className='cityStateCountryContainer'>
+                        <div><i className="fa-solid fa-star-sharp"></i></div>
+                        <span>{spot.city}, {spot.state}, {spot.country}</span>
+                    </div>
                 </div>
-                <div className='cityStateCountryContainer'>
-                    <div><i className="fa-solid fa-star-sharp"></i></div>
-                    <span>{spot.city}, {spot.state}, {spot.country}</span>
+                <div className='middleSection'>
+                    <div className='spotImgsContainer'>
+                        <img alt='spotImg' className='spotPageImg' src={spot.Images[0].url}></img>
+                    </div>
                 </div>
-            </div>
-            <div className='middleSection'>
-                <div className='spotImgsContainer'>
-                    <img alt='spotImg' className='spotPageImg' src={spot.Images[0].url}></img>
-                </div>
-            </div>
-            <div className='bottomSection'>
-                <div className='spotPageInfo'>
+                <div className='bottomSection'>
+                    <div className='spotPageInfo'>
 
+                    </div>
+                    <DeleteConfirmationModal spotId={spotId}/>
+                    <EditModal spot={ spot } spotId={spotId}/>
                 </div>
-                <DeleteConfirmationModal spotId={spotId}/>
-                <EditModal spot={ spot } spotId={spotId}/>
             </div>
             <div className='reviewSection'>
                 <Reviews spotId={spotId}/>
