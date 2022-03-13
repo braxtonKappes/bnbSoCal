@@ -4,11 +4,9 @@
     align-items: center;
     position: fixed;
     bottom: 0;
-    width: 100%;
     height: 60px;
     background-color: white;
     z-index: 100;
-    margin-bottom: 10px;
 }
 
 .infoButton {
@@ -20,19 +18,42 @@
     padding: 0px 5px
 }
 
-.infoContainer {
+.footerInfoContainer {
     display: flex;
-    max-width: 100%;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+}
+
+.icons > a {
+    color: white;
+    padding: 0px 5px;
+    font-size: 40px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
 }
 
 .infoBar {
+    border-radius: 5px;
     display: flex;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+}
+
+.infoBarOuterContainer {
+    height: 100%;
 }
 
 .infoBarText {
     display: flex;
-    align-items: center;
-    padding-left: 10px;
+    align-self: center;
+    padding: 0px 10px 0px 0px;
+    color: white;
     font-size: 12px;
     font-weight: 2000;
 }

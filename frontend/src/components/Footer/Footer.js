@@ -7,9 +7,7 @@ function Footer() {
 
     return (
     <footer className='Footer'>
-        <div className='infoButton'>
-            <InfoButton />
-        </div>
+        <InfoButton />
     </footer>
     )
 }

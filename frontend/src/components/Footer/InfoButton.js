@@ -21,32 +21,31 @@ function ProfileButton() {
     return () => document.removeEventListener("click", closeMenu);
     }, [showMenu]);
     return (
-    <>
-        <div className="infoContainer">
-            <div className="infoButton" onClick={openMenu}>
-                <i class="fa-solid fa-circle-info"></i>
-            </div>
-            {showMenu && (
-            <div className="infoBar">
-                <div>
-                    <a href=''><i class="fa-brands fa-github"></i></a>
+        <div className="footerInfoContainer">
+                <div className="infoButton" onClick={openMenu}>
+                    <i class="fa-solid fa-circle-info"></i>
                 </div>
-                <div>
-
-                </div>
-                <div>
-
-                </div>
-                <div>
-
-                </div>
-                <div className="infoBarText">
-                    <p>Developed By: Braxton Kappes</p>
-                </div>
-            </div>
-            )}
+                {showMenu && (
+                    <div className="infoBar">
+                        <div className="icons">
+                            <a
+                            href='https://github.com/braxtonKappes'
+                            target="_blank"
+                            >
+                                <i class="fa-brands fa-github-square"></i>
+                            </a>
+                            <a
+                            href='https://www.linkedin.com/in/braxton-kappes-b68984119/'
+                            target="_blank"
+                            >
+                                <i class="fa-brands fa-linkedin"></i></a>
+                        </div>
+                        <div className="infoBarText">
+                            <p>Developed By: Braxton Kappes</p>
+                        </div>
+                    </div>
+                )}
         </div>
-    </>
     );
 }
 

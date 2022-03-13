@@ -5,6 +5,7 @@ import './Reviews.css'
 
 function Reviews({ spotId }) {
     const [isLoaded, setIsLoaded] = useState(false);
+    const [review, setReview] = useState('')
     const dispatch = useDispatch();
     const reviews = useSelector(state => Object.values(state.reviews))
     const spotReviews = reviews.filter(review => spotId == review.spotId)
@@ -21,16 +22,35 @@ function Reviews({ spotId }) {
     return (
         isLoaded && (
             <div className='reviewsMainContainer'>
-                <div className='reviewsContainer'>
-                    {spotReviews.map(spotReview => (
-                        <div key={spotReview.id} className='reviewContainer'>
-                                <p>{spotReview.rating}</p>
-                                <p>{spotReview.review}</p>
-                        </div>
-                    ))}
-                </div>
                 <div className='createReviewContainer'>
-                    Create a review
+                    <div className='reviewLabel'>
+                        <label>
+                            Create a Review!
+                        </label>
+                    </div>
+                    <div className='inputForReview'>
+                        <input
+                            type="text"
+                            placeholder='How was your stay?'
+                            value=''
+                            onChange={(e) => setReview(e.target.value)}
+                            required
+                            />
+                    </div>
+                </div>
+                <div className='outerReviewsContainer'>
+                    <div className='reviewsContainer'>
+                        {spotReviews.map(spotReview => (
+                            <div key={spotReview.id} className='reviewContainer'>
+                                <p className='reviewRating'>
+                                    <i class="fa-solid fa-star"></i>  {spotReview.rating}
+                                </p>
+                                <p className='reviewsText'>
+                                    {spotReview.review}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         )
