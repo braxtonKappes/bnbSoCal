@@ -1,18 +1,18 @@
 import React from "react";
-import * as spotsActions from "../../store/spots";
+import * as reviewsActions from "../../store/review";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import './DeleteConfirm.css';
 
-function DeleteConfirm( { setShowModal, spotId } ) {
+function DeleteConfirm( { setShowModal, spotId, spotReviewId } ) {
     const dispatch = useDispatch();
     const history = useHistory()
 
     const handleCLick = async (e) => {
     e.preventDefault();
-    await dispatch(spotsActions.delSpot(spotId));
+    await dispatch(reviewsActions.delReview(spotReviewId));
     setShowModal(false);
-    history.push('/spots')
+    history.push(`/spots/${spotId}`)
     }
 
     return (

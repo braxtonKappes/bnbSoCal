@@ -40,11 +40,8 @@ function SpotPage() {
                     </div>
                 </div>
                 <div className='bottomSection'>
-                    <div className='spotPageInfo'>
-
-                    </div>
                     <DeleteConfirmationModal spotId={spotId}/>
-                    <EditModal spot={ spot } spotId={spotId}/>
+                    <EditModal spot={spot} spotId={spotId}/>
                 </div>
             </div>
             <div className='reviewSection'>

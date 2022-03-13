@@ -7,7 +7,7 @@ import './EditForm.css';
 function EditForm( { spot, spotId } ) {
     const dispatch = useDispatch();
     let history = useHistory();
-    const [isLoaded, setIsLoaded] = useState(false)
+    // const [isLoaded, setIsLoaded] = useState(false)
     const [address, setAddress] = useState(spot.address);
     const [city, setCity] = useState(spot.city);
     const [state, setState] = useState("California");
@@ -35,7 +35,6 @@ function EditForm( { spot, spotId } ) {
         try {
             editedSpot = dispatch(putSpot(updateSpot));
         } catch (error) {
-        console.log('Error in edit form!')
         }
         if (editedSpot) {
             setErrors([]);

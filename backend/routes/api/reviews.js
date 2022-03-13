@@ -10,8 +10,11 @@ const reviewValidations = [
     check(`rating`)
         .exists({ checkFalsy: true })
         .notEmpty()
-        .isLength({ max: 9 })
-        .withMessage('Please provide a valid price'),
+        .isInt({
+            min: 1,
+            max: 5,
+        })
+        .withMessage('Please provide a valid rating'),
     check(`review`)
         .exists({ checkFalsy: true })
         .notEmpty()
@@ -21,24 +24,30 @@ const reviewValidations = [
 ];
 
 // Get all reviews for spot
-router.get('/',
+router.get('/spots/:id/reviews',
 asyncHandler(async(req, res) => {
-    const reviews = await Review.findAll()
+    const paramId = req.params.id * 1;
+    const reviews = await Review.findAll({
+        where: {
+            spotId: paramId
+        }
+    })
     return res.json(reviews)
 }));
 
 // Add a review
-router.post('/',
+router.post('/spots/:id/reviews',
 requireAuth,
 reviewValidations,
 asyncHandler(async (req, res) => {
-    const { spotId, userId, review, rating } = req.body;
+    const spotId = req.params.id * 1;
+    const { userId, review, rating } = req.body;
     const newReview = await Review.create({ userId, spotId, rating, review });
     return res.json({ newReview })
 }));
 
 // Edit a review
-router.put('/:id',
+router.put('/reviews/:id',
 requireAuth,)
 asyncHandler(async (req,res) => {
     const { rating, review } = req.body;
@@ -46,17 +55,15 @@ asyncHandler(async (req,res) => {
 })
 
 // Delete a review
-router.delete('/:id',
+router.delete('/reviews/:id',
 requireAuth,
 asyncHandler(async (req, res) => {
-    const { id } = req.body;
+    const id = req.params.id * 1;
     const review = await Review.findByPk(id)
-    await Review.destroy({
-        where: {
-            id: review.id
-        }
-    })
-    return res.json(review)
+    console.log('this is the review BEFORE deleted!!!,', review);
+    await review.destroy()
+    console.log('this is the review AFTER deleted!!!,', review);
+    return res.json(id)
 }));
 
 module.exports = router;

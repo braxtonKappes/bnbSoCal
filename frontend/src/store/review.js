@@ -5,9 +5,9 @@ const ADD_REVIEW = 'reviews/ADD_SPOT';
 const REMOVE_REVIEW = 'reviews/REMOVE_SPOT';
 const EDIT_REVIEW = 'reviews/EDIT_SPOT';
 
-const loadAll = (allReviews) => ({
+const loadAll = (reviews) => ({
     type: LOAD_ALL,
-    allReviews
+    reviews
 });
 
 const addReview = (review) => ({
@@ -26,8 +26,8 @@ const editReview = (reviewId) => ({
 });
 
 // Get all reviews for spot
-export const getAllReviews = () => async (dispatch) => {
-    const res = await csrfFetch(`/api/reviews`)
+export const getAllReviews = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${id}/reviews`)
 
     if (res.ok) {
         const reviews = await res.json();
@@ -36,34 +36,34 @@ export const getAllReviews = () => async (dispatch) => {
     }
 }
 
-// export const getAllSpots = () => async (dispatch) => {
-//     const res = await csrfFetch(`/api/spots`)
-
-//     if (res.ok) {
-//         const spots = await res.json();
-//         dispatch(loadAll(spots))
-//         return spots;
-//     };
-// };
-
-
 // Create a review
 
+export const createReview = (data, spotId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+        method: 'POST',
+        body: JSON.stringify(data)
+    });
 
+    if (res.ok) {
+        const reviewData = await res.json();
+        dispatch(addReview(reviewData));
+        return reviewData;
+    };
+};
 
-// export const hostSpot = (data) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/spots`, {
-//         method: `POST`,
-//         body: JSON.stringify(data)
-//     });
+// Delete a review
 
-//     if (res.ok) {
-//         const spotData = await res.json();
-//         console.log("this is spotData BEFORE dispatch,", spotData);
-//         dispatch(addSpot(spotData.spot));
-//         return spotData;
-//     }
-// }
+export const delReview = (id) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${id}`, {
+        method: `DELETE`,
+        body: JSON.stringify({id})
+    });
+    if(res.ok) {
+        const reviewId = await res.json();
+        dispatch(removeReview(reviewId))
+        return reviewId;
+    }
+}
 
 // Edit a review
 
@@ -81,41 +81,28 @@ export const getAllReviews = () => async (dispatch) => {
 //     }
 // }
 
-// Delete a review
 
-
-
-// export const delSpot = (id) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/spots/${id}`, {
-//         method: `DELETE`,
-//         body: JSON.stringify({id}),
-//     });
-//     if (res.ok) {
-//         const spotId = await res.json();
-//         dispatch(removeSpot(spotId))
-//         return spotId;
-//     }
-// }
-
-const reviewsReducer = (state={}, action) => {
+const reviewsReducer = (state={
+    allReviews: {}
+}, action) => {
     let newState = {...state}
     switch (action.type) {
         case LOAD_ALL: {
-            action.allReviews.forEach(review => {
-            newState[review.id] = review;
+            action.reviews.forEach(review => {
+            newState.allReviews[review.id] = review;
             });
             return newState;
         }
         case ADD_REVIEW: {
-            newState[action.review.id] = action.review
+            newState.allReviews[action.review.id] = action.review
             return newState;
         }
         case EDIT_REVIEW: {
-            newState[action.review.id] = action.review
+            newState.allReviews[action.review.id] = action.review
             return newState;
         }
         case REMOVE_REVIEW: {
-            delete newState[action.reviewId]
+            delete newState.allReviews[action.reviewId]
             return newState
         }
         default:

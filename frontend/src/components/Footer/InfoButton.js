@@ -23,7 +23,7 @@ function ProfileButton() {
     return (
         <div className="footerInfoContainer">
                 <div className="infoButton" onClick={openMenu}>
-                    <i class="fa-solid fa-circle-info"></i>
+                    <i className="fa-solid fa-circle-info"></i>
                 </div>
                 {showMenu && (
                     <div className="infoBar">
@@ -32,13 +32,13 @@ function ProfileButton() {
                             href='https://github.com/braxtonKappes'
                             target="_blank"
                             >
-                                <i class="fa-brands fa-github-square"></i>
+                                <i className="fa-brands fa-github-square"></i>
                             </a>
                             <a
                             href='https://www.linkedin.com/in/braxton-kappes-b68984119/'
                             target="_blank"
                             >
-                                <i class="fa-brands fa-linkedin"></i></a>
+                                <i className="fa-brands fa-linkedin"></i></a>
                         </div>
                         <div className="infoBarText">
                             <p>Developed By: Braxton Kappes</p>

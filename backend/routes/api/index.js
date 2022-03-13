@@ -9,7 +9,7 @@ router.use('/spots', spotsRouter);
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/images', imagesRouter);
-router.use('/reviews', reviewsRouter);
+router.use(reviewsRouter);
 
 
 module.exports = router;
