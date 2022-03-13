@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getAllSpots } from '../../store/spots'
+import { getAllSpots, getOneSpot } from '../../store/spots'
 import './Spots.css'
 
 function Spots() {
     const dispatch = useDispatch();
-    const spotsList = useSelector(state => Object.values(state.spots));
+    const spotsList = useSelector(state => Object.values(state.spots.allSpots));
     const [isLoaded, setIsLoaded] = useState(false)
-    console.log("this is spotsList,", spotsList);
 
     useEffect(() => {
         const loaded = async () => {
@@ -18,6 +17,7 @@ function Spots() {
         loaded()
     }, [dispatch]);
 
+    console.log("this is spotsList,", spotsList);
     return (
         isLoaded && spotsList.length > 0 && (
             <div className='mainBody'>

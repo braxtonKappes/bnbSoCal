@@ -21,12 +21,8 @@ export const addImg = (url) => async (dispatch) => {
     }
 }
 
-let initialState = {
-    imgURL: {}
-}
-
 // Reducers
-const imageReducer = (state=initialState, action) => {
+const imageReducer = (state={}, action) => {
     let newState = {...state};
     switch (action.type) {
         case ADD_IMG: {

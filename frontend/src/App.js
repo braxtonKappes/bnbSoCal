@@ -40,7 +40,7 @@ function App() {
           <Route path='/spots/:spotId'>
             <SpotPage />
           </Route>
-          <Route>
+          <Route path='*'>
             <ErrorPage />
           </Route>
         </Switch>

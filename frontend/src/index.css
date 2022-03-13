@@ -11,3 +11,27 @@ body {
     display: block;
     margin: 0px 10px;
 }
+
+i {
+    cursor: pointer;
+}
+
+.submitButton {
+    margin: 10px 0px;
+    background-image:white;
+    border-radius: 10px;
+    padding: 10px 25px;
+    color: linear-gradient(90deg, rgba(114,1,155,1) 0%, rgba(173,1,135,1) 100%);
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.cancelButton {
+    margin: 10px 0px;
+    background-image:white;
+    border-radius: 10px;
+    padding: 10px 25px;
+    color: linear-gradient(90deg, rgba(114,1,155,1) 0%, rgba(173,1,135,1) 100%);
+    border: 1px solid black;
+    cursor: pointer;
+}

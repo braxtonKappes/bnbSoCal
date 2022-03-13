@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import * as spotsActions from "../../store/spots";
+import { putSpot } from "../../store/spots";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom"
 import './EditForm.css';
-import React, { useState }from 'react'
 
 function EditForm( { spot, spotId } ) {
     const dispatch = useDispatch();
+    let history = useHistory();
     const [isLoaded, setIsLoaded] = useState(false)
     const [address, setAddress] = useState(spot.address);
     const [city, setCity] = useState(spot.city);
@@ -13,23 +14,37 @@ function EditForm( { spot, spotId } ) {
     const [country, setCountry] = useState("United States");
     const [name, setName] = useState(spot.name);
     const [price, setPrice] = useState(spot.price);
-    const [url, setURL] = useState(spot.Image.url)
+    const [url, setURL] = useState('')
     const [errors, setErrors] = useState([]);
 
-    const handleSubmit = async (e) => {
-    e.preventDefault();
-    setErrors([]);
 
-    return dispatch(spotsActions.putSpot({spotId})).catch(
-        async (res) => {
-        const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const updateSpot = {
+            address,
+            city,
+            country,
+            state,
+            name,
+            price,
+            url,
+            spotId,
+        };
+        let editedSpot;
+        try {
+            editedSpot = dispatch(putSpot(updateSpot));
+        } catch (error) {
+        console.log('Error in edit form!')
         }
-    );
-};
+        if (editedSpot) {
+            setErrors([]);
+            history.push('/spots');
+        }
+    };
 
     return (
-    <div className="formContainer">
+    <div className="editFormContainer">
         <form className='editForm' onSubmit={handleSubmit}>
             <ul className={errors.length > 0 ? "errorList" : "hideErrorList"}>
             {errors.map((error, idx) => (

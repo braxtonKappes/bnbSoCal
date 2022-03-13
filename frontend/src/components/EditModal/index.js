@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import EditModal from './EditForm';
+import EditForm from './EditForm';
 import './EditForm.css';
 
-function EditModal( { spot } ) {
+function EditModal( { spot, spotId } ) {
     const [showModal, setShowModal] = useState(false);
 
     return (
     <>
-        <i class="fa-regular fa-pen-to-square"  onClick={() => setShowModal(true)}></i>
+        <i className="fa-regular fa-pen-to-square"  onClick={() => setShowModal(true)}></i>
         {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-            <EditModal spot={spot}/>
+            <EditForm spot={spot} spotId={spotId} setShowModal={setShowModal}/>
         </Modal>
         )}
     </>

@@ -37,6 +37,10 @@ const hostFormValidations = [
         .notEmpty()
         .isLength({ max: 9 })
         .withMessage('Please provide a valid price'),
+    check(`url`)
+        .exists({ checkFalsy: true })
+        .notEmpty()
+        .withMessage('Please provide a valid url'),
     handleValidationErrors,
 ];
 
@@ -72,31 +76,31 @@ asyncHandler(async (req, res) => {
 router.delete('/:id',
 requireAuth,
 asyncHandler(async (req, res) => {
-    const { id } = req.body;
+    const id  = req.params.id * 1;
     const spot = await Spot.findByPk(id)
-    await Spot.destroy({
-        where: {
-            id: spot.id
-        }
-    })
-    return res.json(spot)
+    await spot.destroy()
+    return res.json(id)
 }));
 
 // Edit a spot
-router.put('/:id',
+router.put('/',
 requireAuth,
 asyncHandler(async (req, res) => {
-    const spotId = req.params.id * 1;
-    const selectSpot = await Spot.findOne({
-        include: { model: Image},
-        where: { id: spotId }
+    const id = req.body.spotId
+    const { url, address, city, state, country, name, price } = req.body;
+    const selectedSpot = await Spot.findByPk(id)
+    const selectedImg = await Image.findOne({
+        where: {
+            spotId: id
+        }
     });
-    await Spot.update(req.body, {
-        where: { id: spotId },
-        returning: true,
-        plain: true,
+    await selectedSpot.update({ address, city, state, country, name, price });
+    await selectedImg.update({ url })
+
+    const spot = await Spot.findByPk(id, {
+        include: [ User, Image ]
     })
-    return res.json(selectSpot)
+    return res.json(spot)
 }))
 
 module.exports = router;
