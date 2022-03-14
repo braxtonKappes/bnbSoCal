@@ -29,7 +29,7 @@ bnbSoCal is where you find beautiful homes to rent for a nice get away.
 8. Start the services in the backend directory.
     - npm start
 9. Start the services in the frontend directory, which should open the project in your deafult browser. If not, navigate to htt://localhost:3000.
-10. You can use the Demo user or create an account to begin using Chonkr.
+10. You can use the Demo user or create an account to begin using bnbSoCal.
   
 # Features
 ### Logged in users can perform the following actions.
