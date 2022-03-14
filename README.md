@@ -1,16 +1,16 @@
 # bnbSoCal
-this is a clone of airbnb. Access the bnbSoCal MVP
+This is a clone of airbnb.
 
-bnbSoCal is where you find beautiful homes to rent for a get away.
+bnbSoCal is where you find beautiful homes to rent for a nice get away.
 
 # Index
 | [MVP Feature List](https://github.com/braxtonKappes/bnbSoCal/wiki/Features-List) | [Database Schema](https://github.com/braxtonKappes/bnbSoCal/wiki/Database-Schema) | API Documentation | [Frontend Routes](https://github.com/braxtonKappes/bnbSoCal/wiki/Frontend-Routes) |
 
-#Technologies Used
+# Technologies Used
 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" style=width:50px /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" style=width:50px />
 
-#Getting Started
+# Getting Started
 
 1. Close this repo
     - git clone https://github.com/braxtonKappes/bnbSoCal.git
