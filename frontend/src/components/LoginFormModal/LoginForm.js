@@ -46,7 +46,7 @@ function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
             />
-            <button className="loginButton" type="submit">Log In</button>
+            <button id='buttonCard' className="loginButton" type="submit">Log In</button>
         </form>
     </div>
     );

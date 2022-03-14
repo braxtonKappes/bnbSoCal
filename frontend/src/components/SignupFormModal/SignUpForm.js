@@ -70,7 +70,7 @@ return (
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
             />
-            <button className="signUpButton" type="submit">Sign Up</button>
+            <button id='buttonCard' className="signUpButton" type="submit">Sign Up</button>
         </form>
     </div>
     );

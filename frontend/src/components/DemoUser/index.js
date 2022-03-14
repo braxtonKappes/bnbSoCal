@@ -24,8 +24,9 @@ function DemoUser() {
     return (
         <div>
             <form onSubmit={demoUserLogin}>
-                <button className="demoUserButton">
+                <button id='' className="demoUserButton">
                     <i className="fa-solid fa-user"></i>
+                    <p>Demo User</p>
                 </button>
             </form>
         </div>

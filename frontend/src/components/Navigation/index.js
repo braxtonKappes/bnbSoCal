@@ -10,16 +10,7 @@ import Logo2 from './Logo2.png'
 
 function Navigation({ isLoaded }){
     const sessionUser = useSelector(state => state.session.user);
-
-    // const [ showHost, setShowHost ] = useState(false)
-
-    // useEffect(() => {
-    //     const urlSplit = window.location.href.split('/')
-    //     if (urlSplit[urlSplit.length - 1] !== 'host'){
-    //         setShowHost(true)
-    //     }
-    // }, [showHost])
-
+    
     let sessionLinks;
 
     if (sessionUser) {

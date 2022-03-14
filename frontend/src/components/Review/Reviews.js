@@ -87,7 +87,7 @@ function Reviews({ spotId }) {
                                     </select>
                                 </div>
                             </div>
-                            <div onClick={handleClick} className="createReviewSubmitButton">Submit</div>
+                            <div onClick={handleClick} id='secondButtonCard' className="createReviewSubmitButton">Submit</div>
                         </div>
                     </form>
                     )}
