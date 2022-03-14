@@ -6,11 +6,11 @@ import ReviewEditModal from '../ReviewEditModal/index'
 import { useHistory } from 'react-router-dom';
 import './Reviews.css'
 
-function Reviews({ spotId }) {
+function Reviews({  spotId }) {
     const [isLoaded, setIsLoaded] = useState(false);
-    const [review, setReview] = useState('')
-    const [rating, setRating] = useState('')
-    const [errors, setErrors] = useState([])
+    const [review, setReview] = useState('');
+    const [rating, setRating] = useState('');
+    const [errors, setErrors] = useState([]);
     const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const history = useHistory();
@@ -108,7 +108,7 @@ function Reviews({ spotId }) {
                                             <ReviewDeleteConfirmationModal className="" spotReviewId={spotReview.id} spotId={spotId}/>
                                         </div>
                                         <div className='reviewEditButton'>
-                                            <ReviewEditModal spotReviewId={spotReview.id} spotId={spotId}/>
+                                            <ReviewEditModal myReview={reviews} spotReviewId={spotReview.id} spotId={spotId}/>
                                         </div>
                                     </div>
                                 )}

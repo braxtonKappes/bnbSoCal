@@ -26,10 +26,10 @@ function DeleteConfirm( { setShowModal, spotId, spotReviewId } ) {
     return (
         isLoaded && (
             <div className="formContainer">
-                <div className='deleteConfirm' onClick={handleCLick}>
+                <div className='deleteConfirm' >
                     <h1>Are you sure you want to delete?</h1>
                     <div className="deleteButtonContainer">
-                        <button className="submitButton" type="submit">Submit</button>
+                        <button onClick={handleCLick} className="submitButton" type="submit">Submit</button>
                         <button className="cancelButton" type='button' onClick={ () => setShowModal(false) }>
                             Cancel
                         </button>

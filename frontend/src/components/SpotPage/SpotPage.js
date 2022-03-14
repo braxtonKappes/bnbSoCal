@@ -7,13 +7,14 @@ import EditModal from '../EditModal/index'
 import Reviews from '../Review/Reviews'
 import './SpotPage.css'
 
-function SpotPage() {
+function SpotPage({spotInfo}) {
     const [isLoaded, setIsLoaded] = useState(false)
     const dispatch = useDispatch();
     const spot = useSelector(state => state.spots.oneSpot);
     const [isUser, setIsUser] = useState(false)
     const currentUser = useSelector(state => state.session.user)
     const { spotId } = useParams();
+
 
     const checkUser = async () => {
         if (currentUser?.id === spot.userId) {
@@ -65,7 +66,7 @@ function SpotPage() {
                     </div>
                 </div>
                 <div className='reviewSection'>
-                    <Reviews spotId={spotId}/>
+                    <Reviews spotInfo={spot} spotId={spotId}/>
                 </div>
             </div>
         </div>

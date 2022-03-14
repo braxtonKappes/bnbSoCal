@@ -4,13 +4,12 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom"
 import './ReviewEditForm.css';
 
-function ReviewEditForm( { setShowModal, spotId, spotReviewId } ) {
+function ReviewEditForm( { myReview ,setShowModal, spotId, spotReviewId } ) {
     const dispatch = useDispatch();
     let history = useHistory();
-    const [rating, setRating] = useState('');
-    const [review, setReview] = useState('');
+    const [rating, setRating] = useState(myReview[0].rating);
+    const [review, setReview] = useState(myReview[0].review);
     const [errors, setErrors] = useState([]);
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
