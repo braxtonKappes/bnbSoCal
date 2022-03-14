@@ -31,7 +31,7 @@ function ProfileButton({ user }) {
     return (
     <>
         <div className="profileButton" onClick={openMenu}>
-            <i class="fa-solid fa-bars"></i>
+            <i className="fa-solid fa-bars"></i>
             <i className="fa-solid fa-user"></i>
         </div>
         {showMenu && (

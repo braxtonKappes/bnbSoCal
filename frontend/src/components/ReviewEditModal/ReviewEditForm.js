@@ -7,7 +7,6 @@ import './ReviewEditForm.css';
 function ReviewEditForm( { setShowModal, spotId, spotReviewId } ) {
     const dispatch = useDispatch();
     let history = useHistory();
-    // const [isLoaded, setIsLoaded] = useState(false)
     const [rating, setRating] = useState('');
     const [review, setReview] = useState('');
     const [errors, setErrors] = useState([]);
@@ -40,28 +39,36 @@ function ReviewEditForm( { setShowModal, spotId, spotReviewId } ) {
                 <li key={idx}>{error}</li>
             ))}
             </ul>
-            <label>
-            Edit your review.
-            </label>
-            <input
-                type="text"
-                value={review}
-                onChange={(e) => setReview(e.target.value)}
-                required
-            />
-            <select
-            value={rating}
-            onChange={(e) => setRating(e.target.value)}
-            >
-                <option></option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-            </select>
-            <button onClick={handleSubmit} className="submitButton">Submit</button>
-            <button className="reviewCancelButton" type='button' onClick={ () => setShowModal(false)}>
+            <div className="editReviewLabel">
+                <label>
+                Write an updated review!
+                </label>
+            </div>
+            <div className="inputAndSelectorContainer">
+                <div className="editReviewInput">
+                    <textarea
+                        type="text"
+                        value={review}
+                        onChange={(e) => setReview(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className="reviewEditRatingDropDown">
+                    <select
+                    value={rating}
+                    onChange={(e) => setRating(e.target.value)}
+                    >
+                        <option></option>
+                        <option value={1}>1</option>
+                        <option value={2}>2</option>
+                        <option value={3}>3</option>
+                        <option value={4}>4</option>
+                        <option value={5}>5</option>
+                    </select>
+                </div>
+            </div>
+            <button onClick={handleSubmit} id="secondButtonCard" className="submitButton">Submit</button>
+            <button id="buttonCard" className="reviewCancelButton" type='button' onClick={ () => setShowModal(false)}>
             Cancel
             </button>
         </form>

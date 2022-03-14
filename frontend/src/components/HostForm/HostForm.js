@@ -1,4 +1,4 @@
-import React, { useState }from 'react'
+import React, { useState, useEffect }from 'react'
 import * as spotActions from "../../store/spots";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
@@ -14,10 +14,17 @@ function HostForm() {
     const [price, setPrice] = useState("");
     const [url, setURL] = useState("")
     const [errors, setErrors] = useState([]);
-
+    const [isUser, setIsUser] = useState(false)
     let history = useHistory()
-
     const sessionUser = useSelector(state => state.session.user);
+
+    const checkUser = () => {
+        if (sessionUser) {
+            setIsUser(true)
+        } else {
+            setErrors(['Please login or sign up first before hosting.'])
+        }
+    }
 
 
     const handleSubmit = async (e) => {
@@ -25,6 +32,7 @@ function HostForm() {
     setErrors([]);
 
     try {
+        checkUser()
         await dispatch(spotActions.hostSpot({ url, userId: sessionUser.id, address, city, state, country, name, price }))
         history.push('/spots')
     } catch (err) {

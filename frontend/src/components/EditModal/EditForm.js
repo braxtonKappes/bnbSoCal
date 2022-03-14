@@ -118,7 +118,7 @@ function EditForm( { spot, spotId } ) {
                     onChange={(e) => setURL(e.target.value)}
                     required
                 />
-                <button className="submitButton">Submit</button>
+                <button id='secondButtonCard' className="submitButton">Submit</button>
         </form>
     </div>
     );
