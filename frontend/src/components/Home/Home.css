@@ -57,10 +57,10 @@
     position: relative;
     margin-left: 120px;
     margin-right: 120px;
+    margin-bottom: 200px;
     padding-left: 80px;
     padding-right: 80px;
     border-radius: 15px;
-    width: fit-content;
     height: 500px;
     color: black;
 }
@@ -85,4 +85,10 @@
     padding: 15px;
     width: 125px;
     border: 1px solid white;
+}
+
+.bottomHomePageContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 200px;
 }

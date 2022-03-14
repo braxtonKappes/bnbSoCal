@@ -53,15 +53,15 @@ function SpotPage() {
                             <div className='cityStateCountryContainer'>
                                 <span>{spot.city}, {spot.state}, {spot.country}</span>
                             </div>
-                            {isUser && (
-                            <div className='spotsDeleteAndEditButtonsContainer'>
-                                <div className='spotsDeleteAndEditButtons'>
-                                    <DeleteConfirmationModal spotId={spotId}/>
-                                    <EditModal spot={spot} spotId={spotId}/>
-                                </div>
-                            </div>
-                            )}
                         </div>
+                        {isUser && (
+                        <div className='spotsDeleteAndEditButtonsContainer'>
+                            <div className='spotsDeleteAndEditButtons'>
+                                <DeleteConfirmationModal spotId={spotId}/>
+                                <EditModal spot={spot} spotId={spotId}/>
+                            </div>
+                        </div>
+                        )}
                     </div>
                 </div>
                 <div className='reviewSection'>

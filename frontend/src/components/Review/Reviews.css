@@ -117,5 +117,19 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
 
+.reviewButtons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+}
+
+.reviewDeleteButton {
+    display: flex;
+    padding-right: 10px;
+}
+
+.reviewEditButton {
+    display: flex;
 }

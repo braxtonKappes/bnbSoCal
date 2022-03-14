@@ -43,6 +43,7 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    margin: 25px 0px;
 }
 
 .mainBodyBackGround {
@@ -50,5 +51,18 @@
 }
 
 .spotsDeleteAndEditButtonsContainer {
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spotsDeleteAndEditButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+.spotsDeleteAndEditButtons > * {
+    padding: 0px 10px 10px 10px;
 }

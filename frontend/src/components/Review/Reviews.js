@@ -62,7 +62,7 @@ function Reviews({ spotId }) {
                         <div className='createAReviewContainer'>
                             <div className='reviewLabel'>
                                 <label>
-                                    Create a Review!
+                                    Write a Review!
                                 </label>
                             </div>
                             <div className='inputForReview'>
@@ -105,7 +105,7 @@ function Reviews({ spotId }) {
                                 {currentUser?.id === spotReview?.userId && (
                                     <div className='reviewButtons'>
                                         <div className='reviewDeleteButton'>
-                                            <ReviewDeleteConfirmationModal spotReviewId={spotReview.id} spotId={spotId}/>
+                                            <ReviewDeleteConfirmationModal className="" spotReviewId={spotReview.id} spotId={spotId}/>
                                         </div>
                                         <div className='reviewEditButton'>
                                             <ReviewEditModal spotReviewId={spotReview.id} spotId={spotId}/>

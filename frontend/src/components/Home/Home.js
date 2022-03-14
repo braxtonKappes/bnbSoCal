@@ -15,14 +15,16 @@ function Home() {
             </a>
           </div>
         </div>
-        <div className='imFlexibleContainer'>
-          <p>Let your curiosity do the booking</p>
-          <div className='imFlexible'>
-            <Link to='/spots'>
-              I'm flexible
-            </Link>
+        <div className='bottomHomePageContainer'>
+          <div className='imFlexibleContainer'>
+            <p>Let your curiosity do the booking</p>
+            <div className='imFlexible'>
+              <Link to='/spots'>
+                I'm flexible
+              </Link>
           </div>
         </div>
+      </div>
     </div>
   )
 }
