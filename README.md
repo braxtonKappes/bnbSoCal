@@ -4,7 +4,7 @@ this is a clone of airbnb. Access the bnbSoCal MVP
 bnbSoCal is where you find beautiful homes to rent for a get away.
 
 # Index
-| MVP Feature List | Database Schema | API Documentation | Frontend Routes |
+| [MVP Feature List](https://github.com/braxtonKappes/bnbSoCal/wiki/Features-List) | [Database Schema](https://github.com/braxtonKappes/bnbSoCal/wiki/Database-Schema) | API Documentation | [Frontend Routes](https://github.com/braxtonKappes/bnbSoCal/wiki/Frontend-Routes) |
 
 #Technologies Used
 
