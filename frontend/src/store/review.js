@@ -4,6 +4,7 @@ const LOAD_ALL = 'reviews/LOAD_ALL';
 const ADD_REVIEW = 'reviews/ADD_SPOT';
 const REMOVE_REVIEW = 'reviews/REMOVE_SPOT';
 const EDIT_REVIEW = 'reviews/EDIT_SPOT';
+const CLEAR_STATE = 'reviews/CLEAR_STATE'
 
 const loadAll = (reviews) => ({
     type: LOAD_ALL,
@@ -20,10 +21,18 @@ const removeReview = (reviewId) => ({
     reviewId
 });
 
-const editReview = (reviewId) => ({
-    type: EDIT_REVIEW,
-    reviewId
-});
+// const editReview = (reviewId) => ({
+//     type: EDIT_REVIEW,
+//     reviewId
+// });
+
+const clearestState = () => ({
+    type: CLEAR_STATE
+})
+
+export const clearMyState = () => async (dispatch) => {
+    dispatch(clearestState())
+}
 
 // Get all reviews for spot
 export const getAllReviews = (id) => async (dispatch) => {
@@ -104,6 +113,10 @@ const reviewsReducer = (state={
         case REMOVE_REVIEW: {
             delete newState.allReviews[action.reviewId]
             return newState
+        }
+        case CLEAR_STATE: {
+            newState.allReviews = {}
+            return newState;
         }
         default:
             return state;

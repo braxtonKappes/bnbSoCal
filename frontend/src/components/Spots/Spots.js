@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getAllSpots } from '../../store/spots'
+import * as reviewActions from '../../store/review'
 import './Spots.css'
 
 function Spots() {
@@ -24,7 +25,7 @@ function Spots() {
                 <div className='overallSpotsContainer'>
                     {spotsList.map(spot => (
                         <div key={spot.id} className='spotContainer'>
-                            <Link to={`/spots/${spot.id}`}>
+                            <Link onClick={(e) => dispatch(reviewActions.clearMyState())} to={`/spots/${spot.id}`}>
                                 <img alt='spotImg' className='spotImage' src={spot.Images[0].url}></img>
                             <div className='infoContainer'>
                                 <div className='cityAndState'>

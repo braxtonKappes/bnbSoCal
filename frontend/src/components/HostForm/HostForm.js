@@ -29,16 +29,20 @@ function HostForm() {
         history.push('/spots')
     } catch (err) {
         const data = await err.json();
+        console.log(data.errors);
         if (data && data.errors) setErrors(data.errors);
     }
 }
+
+const filteredErrors = errors.filter(error => error !== 'Invalid value')
+
 
     return (
         <div className='HostForm'>
             <div className='formContainer'>
                 <form className='hostForm' onSubmit={handleSubmit}>
-                    <ul className={errors.length > 0 ? "errorList" : "hideErrorList"}>
-                    {errors.map((error, idx) => (
+                    <ul className={filteredErrors.length > 0 ? "errorList" : "hideErrorList"}>
+                    {filteredErrors.map((error, idx) => (
                         <li key={idx}>{error}</li>
                     ))}
                     </ul>

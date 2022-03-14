@@ -21,7 +21,7 @@ function EditForm( { spot, spotId } ) {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const updateSpot = {
+        const updateReview = {
             address,
             city,
             country,
@@ -44,7 +44,6 @@ function EditForm( { spot, spotId } ) {
 
     const filteredErrors = errors.filter(error => error !== 'Invalid value')
 
-
     return (
     <div className="editFormContainer">
         <form className='editForm' onSubmit={handleSubmit}>
@@ -59,63 +58,16 @@ function EditForm( { spot, spotId } ) {
                 <input
                     type="text"
                     value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    onChange={(e) => setReview(e.target.value)}
                     required
                 />
                 <label>
                 City
                 </label>
                 <input
-                    type="text"
+                    type="integer"
                     value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    required
-                />
-                <label>
-                State
-                </label>
-                <input
-                    type="text"
-                    value={state}
-                    disabled
-                    onChange={(e) => setState(e.target.value)}
-                    required
-                />
-                <label>
-                Country
-                </label>
-                <input
-                    type="text"
-                    value={country}
-                    disabled
-                    onChange={(e) => setCountry(e.target.value)}
-                    required
-                />
-                <label>
-                Name
-                </label>
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                />
-                <label>
-                Price
-                </label>
-                <input
-                    type="text"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    required
-                />
-                <label>
-                Image URL
-                </label>
-                <input
-                    type="text"
-                    value={url}
-                    onChange={(e) => setURL(e.target.value)}
+                    onChange={(e) => setRating(e.target.value)}
                     required
                 />
                 <button className="submitButton">Submit</button>

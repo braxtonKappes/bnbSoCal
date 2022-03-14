@@ -5,7 +5,7 @@ import './EditForm.css';
 
 function EditModal( { spot, spotId } ) {
     const [showModal, setShowModal] = useState(false);
-    
+
     return (
     <>
         <i className="fa-regular fa-pen-to-square"  onClick={() => setShowModal(true)}></i>
