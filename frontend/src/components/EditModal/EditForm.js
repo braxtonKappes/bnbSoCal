@@ -38,9 +38,10 @@ function EditForm( { setShowModal, spot, spotId } ) {
         }
         if (editedSpot) {
             setErrors([]);
-            history.push(`/spots/${spotId}`);
+            history.push(`/spots`);
         }
     };
+
 
     const filteredErrors = errors.filter(error => error !== 'Invalid value')
 
