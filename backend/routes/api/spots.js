@@ -49,7 +49,8 @@ const hostFormValidations = [
 ];
 
 // Getting all spots
-router.get('/', asyncHandler(async(req, res) => {
+router.get('/',
+asyncHandler(async(req, res) => {
     const spots = await Spot.findAll({
         include: [ User, Image ]
     })
@@ -57,7 +58,8 @@ router.get('/', asyncHandler(async(req, res) => {
 }));
 
 // Getting one spot
-router.get('/:id', asyncHandler(async(req, res) => {
+router.get('/:id',
+asyncHandler(async(req, res) => {
     const spotId = req.params.id * 1;
     const spot = await Spot.findByPk(spotId, {
         include: [ Image, User, Review ]

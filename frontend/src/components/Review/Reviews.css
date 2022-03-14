@@ -2,10 +2,51 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(1px, 1fr));
     row-gap: 32px;
+    column-gap: 50px;
     margin-top: 20px;
     margin-bottom: 100px;
     padding: 0px 10px;
-    width: 50%;
+}
+
+.inputForReview {
+    display: flex;
+    justify-content: center;
+}
+
+.inputForReview > textarea {
+    padding: 10px;
+    width: 500px;
+    height: 50px;
+    border-radius: 7px;
+    border: 1px solid black;
+}
+
+.ratingDropDown {
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    text-align: center;
+}
+
+
+.ratingDropDown > select {
+    display: flex;
+    border-radius: 7px 0px 7px 0px;
+    margin: 0px 0px 0px 3px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.createReviewTextArea {
+    outline: none;
+}
+
+.reviewContainer {
+    margin: 0px 20px;
+}
+
+.outerMainContainer {
+    margin: 0px 350px;
 }
 
 .createReviewContainer {
@@ -17,11 +58,8 @@
 .reviewLabel {
     display: flex;
     justify-content: center;
-}
-
-.inputForReview {
-    display: flex;
-    justify-content: center;
+    padding: 10px 0px;
+    font-weight: 800;
 }
 
 .reviewRating {
@@ -35,9 +73,49 @@
 .outerReviewsContainer {
     display: flex;
     justify-content: center;
+    margin-top: 50px;
+    padding-top: 50px;
+    border-top: 1px solid #d6d6d6;
 }
+
 
 .reviewErrorContainer {
     display: flex;
     justify-content: center;
+}
+
+.createReviewSubmitButton {
+    padding: 15px 25px;
+    margin-top: 5px;
+    font-size: 24px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #000000c1;
+    border: none;
+    box-shadow: 0 9px 15px #999;
+    border-radius: 7px;
+    padding: 7px;
+    color: white;
+    width: 100px;
+    border: 1px solid white;
+}
+
+.createReviewSubmitButton:hover {
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid black;
+}
+
+.createReviewSubmitButton:active {
+    transform: translateY(4px);
+}
+
+.createAReviewContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
 }

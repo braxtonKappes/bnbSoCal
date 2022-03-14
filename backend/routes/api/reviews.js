@@ -54,8 +54,6 @@ reviewValidations,
 requireAuth,
 asyncHandler(async (req,res) => {
     const reviewId = req.params.id * 1;
-    console.log('this is my reviewId,', reviewId);
-    console.log('this is my reqBODY,', req.body);
     const { rating, review } = req.body;
 
     const newReview = await Review.findByPk(reviewId);
@@ -70,9 +68,7 @@ requireAuth,
 asyncHandler(async (req, res) => {
     const id = req.params.id * 1;
     const review = await Review.findByPk(id)
-    console.log('this is the review BEFORE deleted!!!,', review);
     await review.destroy()
-    console.log('this is the review AFTER deleted!!!,', review);
     return res.json(id)
 }));
 
