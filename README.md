@@ -12,7 +12,7 @@ bnbSoCal is where you find beautiful homes to rent for a nice get away.
 
 # Getting Started
 
-1. Close this repo
+1. Clone this repo
     - git clone https://github.com/braxtonKappes/bnbSoCal.git
 2. Install dependencies from the root directory
     - npm install
