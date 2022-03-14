@@ -1,20 +1,15 @@
 import React, { useState } from "react";
-import { putSpot } from "../../store/spots";
+import * as reviewsActions from "../../store/review";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom"
-import './EditForm.css';
+import './ReviewEditForm.css';
 
-function EditForm( { spot, spotId } ) {
+function ReviewEditForm( { setShowModal, spotId, spotReviewId } ) {
     const dispatch = useDispatch();
     let history = useHistory();
     // const [isLoaded, setIsLoaded] = useState(false)
-    const [address, setAddress] = useState(spot.address);
-    const [city, setCity] = useState(spot.city);
-    const [state, setState] = useState("California");
-    const [country, setCountry] = useState("United States");
-    const [name, setName] = useState(spot.name);
-    const [price, setPrice] = useState(spot.price);
-    const [url, setURL] = useState('')
+    const [rating, setRating] = useState('');
+    const [review, setReview] = useState('');
     const [errors, setErrors] = useState([]);
 
 
@@ -22,58 +17,56 @@ function EditForm( { spot, spotId } ) {
         e.preventDefault();
 
         const updateReview = {
-            address,
-            city,
-            country,
-            state,
-            name,
-            price,
-            url,
-            spotId,
+            rating,
+            review
         };
-        let editedSpot;
         try {
-            editedSpot = dispatch(putSpot(updateSpot));
+            await dispatch(reviewsActions.putReview(updateReview, spotReviewId));
+            history.push(`/spots/${spotId}`);
+            setShowModal(false);
         } catch (error) {
-        }
-        if (editedSpot) {
-            setErrors([]);
-            history.push('/spots');
+            const data = await error.json();
+            if (data && data.errors) setErrors(data.errors);
         }
     };
 
     const filteredErrors = errors.filter(error => error !== 'Invalid value')
 
     return (
-    <div className="editFormContainer">
-        <form className='editForm' onSubmit={handleSubmit}>
+    <div className="reviewEditFormContainer">
+        <form className='reviewEditForm' onSubmit={handleSubmit}>
             <ul className={filteredErrors.length > 0 ? "errorList" : "hideErrorList"}>
             {filteredErrors.map((error, idx) => (
                 <li key={idx}>{error}</li>
             ))}
             </ul>
-                <label>
-                Address
-                </label>
-                <input
-                    type="text"
-                    value={address}
-                    onChange={(e) => setReview(e.target.value)}
-                    required
-                />
-                <label>
-                City
-                </label>
-                <input
-                    type="integer"
-                    value={city}
-                    onChange={(e) => setRating(e.target.value)}
-                    required
-                />
-                <button className="submitButton">Submit</button>
+            <label>
+            Edit your review.
+            </label>
+            <input
+                type="text"
+                value={review}
+                onChange={(e) => setReview(e.target.value)}
+                required
+            />
+            <select
+            value={rating}
+            onChange={(e) => setRating(e.target.value)}
+            >
+                <option></option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+            </select>
+            <button onClick={handleSubmit} className="submitButton">Submit</button>
+            <button className="reviewCancelButton" type='button' onClick={ () => setShowModal(false)}>
+            Cancel
+            </button>
         </form>
     </div>
     );
 }
 
-export default EditForm;
+export default ReviewEditForm;

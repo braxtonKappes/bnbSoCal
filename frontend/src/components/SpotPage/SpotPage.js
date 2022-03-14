@@ -12,15 +12,25 @@ function SpotPage() {
     const dispatch = useDispatch();
     const spot = useSelector(state => state.spots.oneSpot);
     const { spotId } = useParams();
-    const idk = useSelector(state => state.reviews);
+    const [isUser, setIsUser] = useState(false)
+    const currentUser = useSelector(state => state.session.user)
+
+    const checkUser = async () => {
+        if (currentUser.id === spot.userId) {
+        setIsUser(true)
+        } else {
+            setIsUser(false)
+        }
+    }
 
     useEffect(() => {
         const loaded = async () => {
             await dispatch(getOneSpot(spotId));
+            await checkUser()
             setIsLoaded(true)
         }
         loaded()
-    }, [dispatch]);
+    }, [dispatch, spotId, isLoaded]);
 
     return (
         isLoaded && (
@@ -42,12 +52,14 @@ function SpotPage() {
                         </div>
                     </div>
                     <div className='bottomSection'>
-                        <div className='spotsDeleteAndEditButtonsContainer'>
-                            <div className='spotsDeleteAndEditButtons'>
-                                <DeleteConfirmationModal spotId={spotId}/>
-                                <EditModal spot={spot} spotId={spotId}/>
+                        {isUser && (
+                            <div className='spotsDeleteAndEditButtonsContainer'>
+                                <div className='spotsDeleteAndEditButtons'>
+                                    <DeleteConfirmationModal spotId={spotId}/>
+                                    <EditModal spot={spot} spotId={spotId}/>
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>

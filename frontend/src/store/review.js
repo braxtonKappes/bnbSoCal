@@ -1,9 +1,9 @@
 import { csrfFetch } from './csrf'
 
 const LOAD_ALL = 'reviews/LOAD_ALL';
-const ADD_REVIEW = 'reviews/ADD_SPOT';
-const REMOVE_REVIEW = 'reviews/REMOVE_SPOT';
-const EDIT_REVIEW = 'reviews/EDIT_SPOT';
+const ADD_REVIEW = 'reviews/ADD_REVIEW';
+const REMOVE_REVIEW = 'reviews/REMOVE_REVIEW';
+const EDIT_REVIEW = 'reviews/EDIT_REVIEW';
 const CLEAR_STATE = 'reviews/CLEAR_STATE'
 
 const loadAll = (reviews) => ({
@@ -21,10 +21,10 @@ const removeReview = (reviewId) => ({
     reviewId
 });
 
-// const editReview = (reviewId) => ({
-//     type: EDIT_REVIEW,
-//     reviewId
-// });
+const editReview = (review) => ({
+    type: EDIT_REVIEW,
+    review
+});
 
 const clearestState = () => ({
     type: CLEAR_STATE
@@ -46,7 +46,6 @@ export const getAllReviews = (id) => async (dispatch) => {
 }
 
 // Create a review
-
 export const createReview = (data, spotId) => async (dispatch) => {
     const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
         method: 'POST',
@@ -61,7 +60,6 @@ export const createReview = (data, spotId) => async (dispatch) => {
 };
 
 // Delete a review
-
 export const delReview = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/reviews/${id}`, {
         method: `DELETE`,
@@ -75,21 +73,17 @@ export const delReview = (id) => async (dispatch) => {
 }
 
 // Edit a review
-
-
-
-// export const putSpot = (data) => async (dispatch) => {
-//     const res = await csrfFetch(`/api/spots`, {
-//         method: "PUT",
-//         body: JSON.stringify(data),
-//     })
-//     if (res.ok) {
-//         const updatedSpot = await res.json()
-//         dispatch(editSpot(updatedSpot))
-//         return updatedSpot
-//     }
-// }
-
+export const putReview = (data, spotReviewId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/reviews/${spotReviewId}`, {
+        method: "PUT",
+        body: JSON.stringify(data),
+    });
+    if (res.ok) {
+        const updatedReview = await res.json();
+        dispatch(editReview(updatedReview));
+        return updatedReview;
+    }
+}
 
 const reviewsReducer = (state={
     allReviews: {}

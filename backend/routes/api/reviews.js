@@ -45,17 +45,24 @@ asyncHandler(async (req, res) => {
     const spotId = req.params.id * 1;
     const { userId, review, rating } = req.body;
     const newReview = await Review.create({ userId, spotId, rating, review });
-    return res.json({ newReview })
+    return res.json(newReview)
 }));
 
 // Edit a review
 router.put('/reviews/:id',
 reviewValidations,
-requireAuth,)
+requireAuth,
 asyncHandler(async (req,res) => {
+    const reviewId = req.params.id * 1;
+    console.log('this is my reviewId,', reviewId);
+    console.log('this is my reqBODY,', req.body);
     const { rating, review } = req.body;
 
-})
+    const newReview = await Review.findByPk(reviewId);
+    await newReview.update({ rating, review })
+    const updatedReview = await Review.findByPk(reviewId)
+    return res.json(updatedReview)
+}));
 
 // Delete a review
 router.delete('/reviews/:id',

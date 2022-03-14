@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as reviewActions from '../../store/review'
 import ReviewDeleteConfirmationModal from '../ReviewDeleteConfirmationModal/index'
+import ReviewEditModal from '../ReviewEditModal/index'
 import { useHistory } from 'react-router-dom';
-// import reviewEditModal from '../EditModal/index'
 import './Reviews.css'
 
 function Reviews({ spotId }) {
@@ -11,13 +11,12 @@ function Reviews({ spotId }) {
     const [review, setReview] = useState('')
     const [rating, setRating] = useState('')
     const [errors, setErrors] = useState([])
-    const user = useSelector(state => state.session.user)
+    const [isUser, setIsUser] = useState(false)
+    const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
-    // const history = useHistory();
-    // const idk = useSelector(state => state.reviews);
-    // const idc = useSelector(state => state.reviews.allReviews);
+    const history = useHistory();
     const reviews = useSelector(state => Object.values(state.reviews.allReviews));
-    
+
 
     useEffect(() => {
         const loaded = async () => {
@@ -34,12 +33,12 @@ function Reviews({ spotId }) {
         const data = {
             review,
             rating,
-            userId: user.id,
+            userId: currentUser.id,
         }
         try {
             await dispatch(reviewActions.createReview(data, spotId))
-            // history.push(`/spots/${spotId}`)
-            window.location.reload()
+            history.push(`/spots/${spotId}`)
+            // window.location.reload()
         } catch (err) {
             const data = await err.json();
             if (data && data.errors) setErrors(data.errors);
@@ -99,12 +98,12 @@ function Reviews({ spotId }) {
                                     {spotReview.review}
                                 </p>
                                 <div>
-                                <div className='reviewDeleteButton'>
-                                    <ReviewDeleteConfirmationModal spotReviewId={spotReview.id} spotId={spotId}/>
-                                </div>
-                                {/* <div className='reviewEditButton'>
-                                    <EditModal spotReviewId={spotReview.id} spot={spot} spotId={spotId}/>
-                                </div> */}
+                                    <div className='reviewDeleteButton'>
+                                        <ReviewDeleteConfirmationModal spotReviewId={spotReview.id} spotId={spotId}/>
+                                    </div>
+                                    <div className='reviewEditButton'>
+                                        <ReviewEditModal spotReviewId={spotReview.id} spotId={spotId}/>
+                                    </div>
                                 </div>
                             </div>
                         ))}

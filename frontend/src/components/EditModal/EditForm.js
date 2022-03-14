@@ -38,7 +38,7 @@ function EditForm( { spot, spotId } ) {
         }
         if (editedSpot) {
             setErrors([]);
-            history.push('/spots');
+            history.push(`/spots/${spotId}`);
         }
     };
 
