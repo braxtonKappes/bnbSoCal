@@ -31,12 +31,14 @@ function ProfileButton() {
                             <a
                             href='https://github.com/braxtonKappes'
                             target="_blank"
+                            rel="noreferrer"
                             >
                                 <i className="fa-brands fa-github-square"></i>
                             </a>
                             <a
                             href='https://www.linkedin.com/in/braxton-kappes-b68984119/'
                             target="_blank"
+                            rel="noreferrer"
                             >
                                 <i className="fa-brands fa-linkedin"></i></a>
                         </div>

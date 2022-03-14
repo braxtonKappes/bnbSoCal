@@ -35,11 +35,15 @@ const hostFormValidations = [
     check(`price`)
         .exists({ checkFalsy: true })
         .notEmpty()
-        .isLength({ max: 9 })
+        .isLength({
+            min: 1,
+            max: 9 })
+        .isInt()
         .withMessage('Please provide a valid price'),
     check(`url`)
         .exists({ checkFalsy: true })
         .notEmpty()
+        .isURL()
         .withMessage('Please provide a valid url'),
     handleValidationErrors,
 ];
@@ -84,6 +88,7 @@ asyncHandler(async (req, res) => {
 
 // Edit a spot
 router.put('/',
+hostFormValidations,
 requireAuth,
 asyncHandler(async (req, res) => {
     const id = req.body.spotId

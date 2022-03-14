@@ -18,8 +18,10 @@ const reviewValidations = [
     check(`review`)
         .exists({ checkFalsy: true })
         .notEmpty()
-        .isLength({ max: 500 })
-        .withMessage('Please provide a valid review '),
+        .isLength({
+            min: 1,
+            max: 500 })
+        .withMessage('Please provide a valid review'),
     handleValidationErrors,
 ];
 
@@ -48,6 +50,7 @@ asyncHandler(async (req, res) => {
 
 // Edit a review
 router.put('/reviews/:id',
+reviewValidations,
 requireAuth,)
 asyncHandler(async (req,res) => {
     const { rating, review } = req.body;
