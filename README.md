@@ -34,6 +34,6 @@ bnbSoCal is where you find beautiful homes to rent for a nice get away.
 # Features
 ### Logged in users can perform the following actions.
     - Add/Remove/Edit/Delete Spots
-    - Add/View//Delete Reviews
+    - Add/View/Edit/Delete Reviews
     
 
