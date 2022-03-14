@@ -11,12 +11,10 @@ function Reviews({ spotId }) {
     const [review, setReview] = useState('')
     const [rating, setRating] = useState('')
     const [errors, setErrors] = useState([])
-    const [isUser, setIsUser] = useState(false)
     const currentUser = useSelector(state => state.session.user)
     const dispatch = useDispatch();
     const history = useHistory();
     const reviews = useSelector(state => Object.values(state.reviews.allReviews));
-
 
     useEffect(() => {
         const loaded = async () => {
@@ -24,7 +22,7 @@ function Reviews({ spotId }) {
             setIsLoaded(true)
         }
         loaded();
-    }, [dispatch]);
+    }, [dispatch, isLoaded]);
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -37,8 +35,9 @@ function Reviews({ spotId }) {
         }
         try {
             await dispatch(reviewActions.createReview(data, spotId))
+            setRating('')
+            setReview('')
             history.push(`/spots/${spotId}`)
-            // window.location.reload()
         } catch (err) {
             const data = await err.json();
             if (data && data.errors) setErrors(data.errors);
@@ -49,9 +48,10 @@ function Reviews({ spotId }) {
 
     return (
         isLoaded && (
-            <div className='reviewsMainContainer'>
+            <div className='outerMainContainer'>
                 <div className='createReviewContainer'>
-                    <form className='reviewForm'>
+                    {currentUser && (
+                        <form className='reviewForm'>
                         <div className='reviewErrorContainer'>
                             <ul className={filteredErrors.length > 0 ? "errorList" : "hideErrorList"}>
                                 {filteredErrors.map((error, idx) => (
@@ -59,33 +59,38 @@ function Reviews({ spotId }) {
                                 ))}
                             </ul>
                         </div>
-                        <div className='reviewLabel'>
-                            <label>
-                                Create a Review!
-                            </label>
-                        </div>
-                        <div className='inputForReview'>
-                            <input
-                                type="text"
-                                placeholder='How was your stay?'
-                                value={review}
-                                onChange={(e) => setReview(e.target.value)}
-                                required
-                                />
-                                <select
-                                value={rating}
-                                onChange={(e) => setRating(e.target.value)}
-                                >
-                                    <option></option>
-                                    <option value={1}>1</option>
-                                    <option value={2}>2</option>
-                                    <option value={3}>3</option>
-                                    <option value={4}>4</option>
-                                    <option value={5}>5</option>
-                                </select>
-                                <button onClick={handleClick} className="submitButton">Submit</button>
+                        <div className='createAReviewContainer'>
+                            <div className='reviewLabel'>
+                                <label>
+                                    Create a Review!
+                                </label>
+                            </div>
+                            <div className='inputForReview'>
+                                <textarea
+                                    type="text"
+                                    placeholder='How was your stay?'
+                                    value={review}
+                                    onChange={(e) => setReview(e.target.value)}
+                                    required
+                                    />
+                                <div className='ratingDropDown'>
+                                    <select
+                                    value={rating}
+                                    onChange={(e) => setRating(e.target.value)}
+                                    >
+                                        <option></option>
+                                        <option value={1}>1</option>
+                                        <option value={2}>2</option>
+                                        <option value={3}>3</option>
+                                        <option value={4}>4</option>
+                                        <option value={5}>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div onClick={handleClick} id='secondButtonCard' className="createReviewSubmitButton">Submit</div>
                         </div>
                     </form>
+                    )}
                 </div>
                 <div className='outerReviewsContainer'>
                     <div className='reviewsContainer'>
@@ -97,14 +102,16 @@ function Reviews({ spotId }) {
                                 <p className='reviewsText'>
                                     {spotReview.review}
                                 </p>
-                                <div>
-                                    <div className='reviewDeleteButton'>
-                                        <ReviewDeleteConfirmationModal spotReviewId={spotReview.id} spotId={spotId}/>
+                                {currentUser?.id === spotReview?.userId && (
+                                    <div className='reviewButtons'>
+                                        <div className='reviewDeleteButton'>
+                                            <ReviewDeleteConfirmationModal spotReviewId={spotReview.id} spotId={spotId}/>
+                                        </div>
+                                        <div className='reviewEditButton'>
+                                            <ReviewEditModal spotReviewId={spotReview.id} spotId={spotId}/>
+                                        </div>
                                     </div>
-                                    <div className='reviewEditButton'>
-                                        <ReviewEditModal spotReviewId={spotReview.id} spotId={spotId}/>
-                                    </div>
-                                </div>
+                                )}
                             </div>
                         ))}
                     </div>

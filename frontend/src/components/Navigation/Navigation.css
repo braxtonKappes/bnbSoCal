@@ -9,6 +9,7 @@
     z-index: 100;
     width: 100%;
     top: 0;
+    border-bottom: 1px solid #EEEEEE;
 }
 
 .bnbLogo {
@@ -64,7 +65,20 @@
     background-color: white;
     cursor: pointer;
     font-size: 20px;
-    padding: 0px 15px
+    padding: 0px 10px;
+    background-color: grey;
+    border-radius: 25px;
+    margin: 7px;
+    box-shadow: 3px 3px 5px rgb(177, 177, 177);
+}
+
+.profileButton > i {
+    font-size: 20px;
+
+}
+
+.profileButton > * {
+    padding: 5px;
 }
 
 .profile-dropdown {

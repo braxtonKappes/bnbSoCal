@@ -1,36 +1,28 @@
 .formContainer {
     display: flex;
     justify-content: center;
-    max-width: 100%;
-}
-
-.errorList {
-    display: flex;
-    color: red;
-}
-
-.hideErrorList {
-    display: none;
 }
 
 .loginForm {
     display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.loginButton {
-    display: flex;
-    align-self: center;
-    border: 2px solid black;
-    border-radius: 15px;
-    padding: 4px 8px 4px 8px;
+#buttonCard {
+    padding: 5px 9px;
     cursor: pointer;
-    background-color: white;
+    font-weight: 800;
+    border-radius: 7px;
+    border: none;
+    color: white;
+    background-color: rgb(0, 0, 0);
 }
 
-.loginButton :hover {
-    background-color: grey;
-    color: red;
+#buttonCard:active {
+    background-color: white;
+    color:black;
+    border: 1px solid black;
 }
