@@ -4,10 +4,9 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom"
 import './EditForm.css';
 
-function EditForm( { spot, spotId } ) {
+function EditForm( { setShowModal, spot, spotId } ) {
     const dispatch = useDispatch();
     let history = useHistory();
-    // const [isLoaded, setIsLoaded] = useState(false)
     const [address, setAddress] = useState(spot.address);
     const [city, setCity] = useState(spot.city);
     const [state, setState] = useState("California");
@@ -34,6 +33,7 @@ function EditForm( { spot, spotId } ) {
         let editedSpot;
         try {
             editedSpot = dispatch(putSpot(updateSpot));
+            setShowModal(false)
         } catch (error) {
         }
         if (editedSpot) {
@@ -104,7 +104,7 @@ function EditForm( { spot, spotId } ) {
                 Price
                 </label>
                 <input
-                    type="text"
+                    type="number"
                     value={price}
                     onChange={(e) => setPrice(e.target.value)}
                     required
